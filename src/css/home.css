@@ -1,0 +1,336 @@
+.homepage {
+  width: 100%;
+  height: auto;
+}
+
+.homepage .brand-frame {
+  width: 100%;
+  height: 758px;
+  background: cover;
+}
+.homepage .brand-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage .brand-container .container {
+  margin-top: 130px;
+}
+
+.homepage .brand-container .container .restaurant-button {
+  background-color: #ffe1c0;
+  color: #ff8a00;
+  width: 152px;
+  height: 40px;
+  border-radius: 7.875rem;
+}
+
+.homepage .brand-container .container .brand-name {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 110%;
+  letter-spacing: 0;
+  margin-top: 1.25rem;
+}
+
+.homepage .brand-container .container .brand-desc {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 200%;
+  letter-spacing: 0;
+  margin-top: 1.25rem;
+}
+
+.homepage .brand-container .container .buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage .brand-container .container .buttons .order-button {
+  width: 230px;
+  height: 72px;
+  margin-top: 1.25rem;
+  border-radius: 162px;
+  background-color: #ff8a00;
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.homepage .brand-container .container .buttons .reser-button {
+  width: 230px;
+  height: 72px;
+  margin-top: 1.25rem;
+  margin-left: 0.5rem;
+  border-radius: 162px;
+  background-color: #3fa72f;
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.homepage .brand-container .imgs {
+  margin-top: 130px;
+  margin-left: 20px;
+}
+
+.homepage .brand-container .imgs .img-brukli-one {
+  width: 200px;
+  height: 220px;
+  transform: rotate(3.39deg);
+}
+
+.homepage .brand-container .imgs .img-brukli-two {
+  width: 200px;
+  height: 220px;
+  margin-left: 420px;
+  margin-top: 90px;
+  transform: rotate(150deg);
+}
+
+.homepage .brand-container .imgs .img-pasta {
+  position: absolute;
+  width: 492.983px;
+  height: 492.983px;
+  top: 180px;
+  margin-left: -140px;
+  margin-top: 90px;
+  z-index: 10;
+  animation: spin 50s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.homepage .ads-restaurant-frame {
+  width: 100%;
+  height: 693px;
+  display: flex;
+  overflow: hidden;
+  transform: perspective(0px);
+  box-shadow: -3px 0px 20px 14px #34343480;
+}
+
+.homepage .ads-restaurant-frame .ads-video {
+  width: 100%;
+  background: #0c0e12;
+  display: flex;
+  box-shadow: 0px -8px 90px rgba(215 215 255);
+  transform: scale(1.5);
+  overflow: hidden;
+}
+
+.homepage .popular-dishes-frame {
+  width: 100%;
+  height: 1700px;
+  display: flex;
+  margin-top: 150x;
+}
+
+.homepage .popular-dishes-frame .popular-section {
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homepage .popular-dishes-frame .popular-section .category-title {
+  text-align: center;
+  color: #311f09;
+
+  width: 643;
+  height: 160;
+  top: 2159px;
+  left: 398.5px;
+  angle: 0 deg;
+  opacity: 1;
+
+  font-family: Tinos;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 80px;
+  leading-trim: NONE;
+  line-height: 200%;
+  letter-spacing: 0%;
+}
+
+.homepage .popular-dishes-frame .popular-section .list-category-section {
+  height: 74px;
+  justify-content: center;
+  margin-top: 30px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 162.94px;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .list-category-section
+  .product-category
+  .category-main {
+  display: flex;
+  gap: 40px;
+  border-radius: 9999px;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .list-category-section
+  .product-category
+  .category-main
+  .button-card-all {
+  display: flex;
+  width: 232px;
+  height: 74px;
+  border-radius: 50px;
+  background-color: #311f09;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 200%;
+  letter-spacing: 0%;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .list-category-section
+  .product-category
+  .category-main
+  .button-card {
+  display: flex;
+  width: 192px;
+  height: 74px;
+  border-radius: 50px;
+  background-color: #e7eaf1ff;
+  color: black;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 200%;
+  letter-spacing: 0%;
+}
+
+.homepage .popular-dishes-frame .popular-section .cards-frame {
+  width: 100%;
+  margin-top: 43px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.homepage .popular-dishes-frame .popular-section .pagination-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f8e5b0ff;
+  width: 435px;
+  margin-top: 60px;
+  angle: 0 deg;
+  opacity: 1;
+}
+
+.homepage .reservation-frame {
+  width: 100%;
+  height: 900px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff9f1ff;
+}
+
+.homepage .open-days {
+  width: 100%;
+  height: 580px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.homepage .open-days .open-days-body {
+  display: flex;
+  width: 1150px;
+  height: 588px;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+      65.69% 65.69% at 50.03% 34.31%,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.72) 82.52%
+    ),
+    url('/public/images/opendays.jpg');
+  background-size: cover;
+  border-radius: 20%;
+}
+
+.homepage .open-days .open-days-body .open-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.homepage .open-days .open-days-body .open-section .open-title {
+  width: 595;
+  height: 160;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: Tinos;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 80px;
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  color: white;
+}
+
+.homepage .open-days .open-days-body .open-section .open-days {
+  width: 346px;
+  height: 80px;
+  angle: 0 deg;
+  opacity: 1;
+  margin-top: 10px;
+  color: white;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 40px;
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.homepage .open-days .open-days-body .open-section .open-time {
+  width: 369;
+  height: 40;
+  angle: 0 deg;
+  opacity: 1;
+  margin-top: -70px;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  text-align: center;
+  color: white;
+}
