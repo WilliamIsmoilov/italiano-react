@@ -55,7 +55,7 @@ export default function Popularmenu() {
               list.map((ele, index) => {
               return (
                 <CssVarsProvider key={index}>
-                  <Card sx={{ width: 270, height:500, display:'flex', flexDirection:'column', backgroundColor: '#f7f2efff',borderRadius:'35px' }}>
+                  <Card sx={{ width: 270, height:500, display:'flex', flexDirection:'column', backgroundColor: '#e7eaf1ff',borderRadius:'35px' }}>
                     
       <AspectRatio minHeight="270px" maxHeight="270px" sx={{display:'flex',  flexDirection:'column', width:'270px'}}>
         <div  className='popular-menu-card' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

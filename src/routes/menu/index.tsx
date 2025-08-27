@@ -1,10 +1,10 @@
-const MenuPage = () => {
-    return ( 
-    <section>
-        <h2 className="text-3xl font-bold mb-8">
-            Menu Page
-        </h2>
-    </section> );
+import MealsPage from "./MealsPage";
+import "../../css/menu.css";
+
+export default function MenuPage(){
+    return( <div className="menupage">
+        <MealsPage/>
+    </div>
+
+    )
 }
- 
-export default MenuPage;

@@ -11,6 +11,7 @@ import "./css/homeNavbar.css"
 import './css/footer.css'
 import Footer from "./components/footer"
 
+
 function App() {
   return (
     <>

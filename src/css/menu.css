@@ -1,0 +1,124 @@
+.menupage {
+  width: 100%;
+  height: auto;
+}
+
+.menupage .meal-frame {
+  width: 100%;
+  height: 1712px;
+  display: flex;
+  justify-content: center;
+}
+
+.menupage .meal-frame .meal-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1112px;
+  height: 1712px;
+}
+
+.menupage .meal-frame .meal-section .meal-title {
+  width: 201;
+  height: 160;
+  margin-top: 151px;
+  angle: 0 deg;
+  opacity: 1;
+
+  font-family: Tinos;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 80px;
+  leading-trim: NONE;
+  line-height: 200%;
+  letter-spacing: 0%;
+}
+
+.menupage .meal-frame .meal-section .meal-front-section .input-box {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 210px;
+  margin-left: 200px;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding-left: 10px;
+}
+
+.menupage
+  .meal-frame
+  .meal-section
+  .list-category-section
+  .product-category
+  .category-main {
+  display: flex;
+  gap: 40px;
+  border-radius: 9999px;
+}
+
+.menupage
+  .meal-frame
+  .meal-section
+  .list-category-section
+  .product-category
+  .category-main
+  .button-card-all {
+  display: flex;
+  width: 232px;
+  height: 74px;
+  border-radius: 50px;
+  background-color: #311f09;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 200%;
+  letter-spacing: 0%;
+  color: white;
+}
+
+.menupage
+  .meal-frame
+  .meal-section
+  .list-category-section
+  .product-category
+  .category-main
+  .button-card {
+  display: flex;
+  width: 192px;
+  height: 74px;
+  border-radius: 50px;
+  background-color: #e7eaf1ff;
+  color: black;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 200%;
+  letter-spacing: 0%;
+}
+
+.menupage .meal-frame .meal-section .cards-frame {
+  width: 100%;
+  margin-top: 43px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.menupage .meal-frame .meal-section .pagination-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f8e5b0ff;
+  width: 435px;
+  margin-top: 60px;
+  angle: 0 deg;
+  opacity: 1;
+}
