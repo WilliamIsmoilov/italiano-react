@@ -1,0 +1,90 @@
+// import React, { useState } from 'react';
+// import { Box, Typography, Button, FormControl } from '@mui/material';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker, TimePicker } from '@mui/x-date-pickers';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import dayjs, { Dayjs } from 'dayjs';
+
+// const BookingForm = () => {
+//   const [date, setDate] = useState<Dayjs | null>(null);
+//   const [time, setTime] = useState<Dayjs | null>(null);
+//   const [partySize, setPartySize] = useState('');
+
+//   const handleSubmit = () => {
+//     console.log({
+//       date: date?.format('YYYY-MM-DD'),
+//       time: time?.format('HH:mm'),
+//       partySize,
+//     });
+//     // Form submission logic
+//   };
+
+//   return (
+//     <LocalizationProvider dateAdapter={AdapterDayjs}>
+//       <Box
+//         sx={{
+//           width: 300,
+//           margin: 'auto',
+//           padding: 4,
+//           backgroundColor: '#fff',
+//           borderRadius: 2,
+//           textAlign: 'center',
+//         }}
+//       >
+//         <Typography variant="h5" fontWeight="bold" mb={3}>
+//           Book a table
+//         </Typography>
+
+//         {/* Date Picker */}
+//         <FormControl fullWidth sx={{ mb: 2 }}>
+//           <DatePicker
+//             label="Date"
+//             value={date}
+//             onChange={(newValue) => setDate(newValue)}
+//             disablePast
+//             format="YYYY-MM-DD"
+//           />
+//         </FormControl>
+
+//         {/* Time Picker */}
+//         <FormControl fullWidth sx={{ mb: 2 }}>
+//           <TimePicker
+//             label="Time"
+//             value={time}
+//             onChange={(newValue) => setTime(newValue)}
+//           />
+//         </FormControl>
+
+//         {/* Party Size */}
+//         <FormControl fullWidth sx={{ mb: 3 }}>
+//           <input
+//             type="number"
+//             placeholder="Party size"
+//             value={partySize}
+//             onChange={(e) => setPartySize(e.target.value)}
+//             style={{
+//               padding: '12px',
+//               borderRadius: '8px',
+//               border: '1px solid #ccc',
+//               width: '100%',
+//               fontSize: '16px',
+//             }}
+//             min={1}
+//           />
+//         </FormControl>
+
+//         <Button
+//           variant="contained"
+//           fullWidth
+//           sx={{ backgroundColor: '#ff9900', fontWeight: 'bold', borderRadius: 2 }}
+//           onClick={handleSubmit}
+//           disabled={!date || !time || !partySize}
+//         >
+//           Book now
+//         </Button>
+//       </Box>
+//     </LocalizationProvider>
+//   );
+// };
+
+// export default BookingForm;

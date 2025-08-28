@@ -126,8 +126,8 @@ export default  function MealsPage(){
             {list.length !== 0 ? ( 
               list.map((ele, index) => {
               return (
-                <CssVarsProvider key={index}>
-                  <Card sx={{ 
+                <CssVarsProvider >
+                  <Card key={index} sx={{ 
                     width: 270,
                     height:500, 
                     display:'flex', 
@@ -141,10 +141,8 @@ export default  function MealsPage(){
                             color: '#fff',
                         },
                      '.order-btn': {
-                         display: 'none', 
-                        },
-                      '.hover-icon-btn': {
-                          display: 'flex', 
+                         backgroundColor:'white',
+                         color: '#FF8A00'
                         },     
                     }
                      
