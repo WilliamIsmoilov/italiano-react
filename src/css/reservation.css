@@ -1,0 +1,64 @@
+.reservation {
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+}
+
+.reservation .reservation-frame {
+  width: 100%;
+  height: 824px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+}
+
+.reservation .reservation-frame .reservation-section {
+  display: flex;
+  width: 1200px;
+  height: 824px;
+  flex-direction: row;
+}
+
+.reservation .reservation-frame .reservation-section .reservation-img {
+  width: 550px;
+  height: 800px;
+}
+
+.reservation .reservation-frame .reservation-section .table-order {
+  width: 475px;
+  height: 600px;
+  margin-top: 70px;
+  display: flex;
+  margin-left: 100px;
+}
+
+.reservation
+  .reservation-frame
+  .reservation-section
+  .reservation-img
+  .circle-wrapper {
+  width: 590px;
+  height: 590px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0f0f0, #ddd); /* Gradient border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 75px;
+  margin-left: -30px;
+}
+
+.reservation .reservation-frame .reservation-section .table-order .book-title {
+  width: 475px;
+  height: 88px;
+  top: 283px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: Tinos;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 80px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+}
