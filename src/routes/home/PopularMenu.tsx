@@ -10,6 +10,8 @@ import { Box,  Stack  } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 
 
+
+
 const list = [
   {productName: 'Bruciola', imagePath: '/images/braciola.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
   {productName: 'Cuisine', imagePath: '/images/cuisine.jpg',  productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
@@ -55,45 +57,35 @@ export default function Popularmenu() {
               list.map((ele, index) => {
               return (
                 <CssVarsProvider key={index}>
-                  <Card sx={{ width: 270, height:500, display:'flex', flexDirection:'column', backgroundColor: '#e7eaf1ff',borderRadius:'35px' }}>
-                    
-      <AspectRatio minHeight="270px" maxHeight="270px" sx={{display:'flex',  flexDirection:'column', width:'270px'}}>
-        <div  className='popular-menu-card' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
+                  <Card className='card-section' >
+                 
+      <AspectRatio minHeight="270px" maxHeight="270px" className='aspectRatio' >
+        <div  className='popular-menu-card' >
           <img
           src={ele.imagePath}
           alt="pictures"
-          style={{  objectFit: 'cover'}}
+          style={{  objectFit: 'cover', borderRadius:'35px'}}
         />
         </div>
       </AspectRatio>
       <CardContent orientation="vertical">
-        <Typography sx={{ display:'flex', justifyContent:'center', height:'60px', fontWeight:'600', fontSize:'30px'}}>{ele.productName}</Typography>
+        <Typography className='product-name' >{ele.productName}</Typography>
         <Typography 
-        sx={{ display:'flex',
-         justifyContent:'center', 
-         height:'84px', 
-         fontSize:'14px',
-         lineHeight:'200%', 
-         fontWeight:'400', 
-         fontFamily:'Poppins',
-         fontStyle: 'Regular',
-         textAlign: 'center'
-         
-         }}>{ele.productDesc}</Typography>
-
-        <Stack sx={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-          <Typography sx={{ fontWeight: 'lg', width:'79px', height:'38px', fontSize:'25px'}}>$2,900</Typography>
+        className='product-desc' >{ele.productDesc}</Typography>
+        <Stack  className='bottom-card-comp'>
+          <Typography className='price' >$2,900</Typography>
         <Button
+        className='order-btn'
           size="md"
           color="primary"
           aria-label="Explore Bahamas Islands"
-          sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600,  width:'157px', height:'55px', borderRadius:'50px', backgroundColor:'#FF8A00'}}
         >
           Order now
         </Button>
         </Stack>
         
-      </CardContent>
+      </CardContent>  
     </Card>
                 </CssVarsProvider>
               )
@@ -107,7 +99,6 @@ export default function Popularmenu() {
           <Stack className='pagination-section'>
              <Pagination count={4} variant="outlined" shape="rounded" />
           </Stack>
-
         </Stack>
       </Container>
        

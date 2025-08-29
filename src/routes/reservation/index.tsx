@@ -6,13 +6,17 @@ import ConfirmationForm from "./Confirmation";
 
 export default function ReservationPage(){
     const location = useLocation()
-    return(
-         <div className="reservation">
-         
-            <Routes location={location}>
+      const state = location.state as { backgroundLocation?: Location };
+    return(<div className="reservation">
+            <Routes location={state?.backgroundLocation || location}>
                <Route path='/' element={<BookingForm/>}/> 
-               <Route path="confirmation" element={<ConfirmationForm/>}/>
             </Routes>
+
+            {state?.backgroundLocation && (
+                <Routes>
+                    <Route  path="/confirmation" element={<ConfirmationForm />} />
+                </Routes>
+            )}
 
         {/* <BookingForm/> */}
     </div>

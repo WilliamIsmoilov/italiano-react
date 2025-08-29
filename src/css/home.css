@@ -176,6 +176,106 @@
   border-radius: 162.94px;
 }
 
+.homepage .popular-dishes-frame .popular-section .cards-frame .aspectRatio {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  border-radius: 35px;
+}
+
+.homepage .popular-dishes-frame .popular-section .cards-frame .card-section {
+  width: 270px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 35px;
+  background-color: #f1f1f1;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .cards-frame
+  .card-section
+  .product-name {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .cards-frame
+  .card-section
+  .product-desc {
+  display: flex;
+  justify-content: center;
+  height: 84px;
+  font-size: 14px;
+  line-height: 200%;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  text-align: center;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .cards-frame
+  .card-section
+  .bottom-card-comp {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .cards-frame
+  .card-section
+  .bottom-card-comp
+  .price {
+  font-weight: 700;
+  width: 79px;
+  height: 38px;
+  font-size: 25px;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .cards-frame
+  .card-section
+  .aspectRatio
+  .popular-menu-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 35px;
+}
+
+.homepage
+  .popular-dishes-frame
+  .popular-section
+  .cards-frame
+  .card-section
+  .bottom-card-comp
+  .order-btn {
+  margin-left: auto;
+  align-self: center;
+  font-weight: 600;
+  width: 157px;
+  height: 55px;
+  border-radius: 50px;
+  background-color: #ff8a00;
+}
+
 .homepage
   .popular-dishes-frame
   .popular-section
@@ -238,6 +338,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 25px;
+  opacity: 2;
+  background-color: transform;
 }
 
 .homepage .popular-dishes-frame .popular-section .pagination-section {

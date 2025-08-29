@@ -6,7 +6,7 @@ import {  Button, FormControl } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function BookingForm(){
   const [date, setDate] = useState<Dayjs | null>(null);
@@ -14,11 +14,13 @@ export default function BookingForm(){
   const [partySize, setPartySize] = useState('');
 
 const navigate = useNavigate();
+const location = useLocation();
 
    const handleOrder = () => {
     if(date &&  time && partySize){
         navigate('confirmation', {
             state: {
+                backgroundLocation: location,
                 date: date.format('YYYY-MM-DD'),
                 time: time.format('HH:mm'),
                 partySize
