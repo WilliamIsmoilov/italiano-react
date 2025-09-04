@@ -83,6 +83,7 @@
   leading-trim: NONE;
   line-height: 114.99999999999999%;
   letter-spacing: 0%;
+  margin-top: 50px;
 }
 
 .confirmation .box .confirmation-section {
@@ -90,4 +91,370 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.confirmation .box {
+  width: 900px;
+  max-height: 1000px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.confirmation .box .confirmation-section .headers {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.confirmation .box .confirmation-section .headers .brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: #ff8a00;
+}
+
+.confirmation .box .confirmation-section .headers .sign-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  margin-left: 500px;
+}
+
+.confirmation .box .confirmation-section .headers .sign-btns .signin {
+  width: 112px;
+  height: 50px;
+  angle: 0 deg;
+  opacity: 1;
+  top: 247px;
+  left: 977px;
+  border-width: 0px;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 133px;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  background-color: rgba(255, 138, 0, 1);
+}
+
+.confirmation .box .confirmation-section .headers .sign-btns .signup {
+  width: 112px;
+  height: 50px;
+  angle: 0 deg;
+  opacity: 1;
+  top: 247px;
+  left: 977px;
+  border-width: 0px;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 133px;
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  background-color: rgba(63, 167, 47, 1);
+}
+
+.confirmation .box .confirmation-section .data-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.confirmation .box .confirmation-section .data-section .data-order {
+  width: 500px;
+  height: 1000px;
+  angle: 0 deg;
+  opacity: 1;
+  top: 70px;
+  left: 224px;
+  margin-top: 70px;
+}
+
+.confirmation .box .confirmation-section .data-section .detail {
+  width: 400px;
+  height: auto;
+  angle: 0 deg;
+  opacity: 1;
+  top: 70px;
+  margin-top: 70px;
+}
+
+.confirmation .box .confirmation-section .data-section .detail .time-detail {
+  width: 400px;
+  height: 300px;
+  angle: 0 deg;
+  opacity: 0.6;
+  background-color: #f7f0f0dc;
+  margin-top: 50px;
+}
+
+.confirmation .box .confirmation-section .data-section .detail .detail-title {
+  width: 230px;
+  height: 38px;
+  angle: 0 deg;
+  opacity: 1;
+  top: 716px;
+  left: 224px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-top: 25px;
+  margin-left: 20px;
+}
+
+.confirmation .box .confirmation-section .data-section .detail .date {
+  width: 338px;
+  height: 34px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.confirmation .box .confirmation-section .data-section .detail .time {
+  width: 338px;
+  height: 34px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.confirmation .box .confirmation-section .data-section .detail .size {
+  width: 338px;
+  height: 34px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.confirmation .box .confirmation-section .data-section .res-information {
+  width: 400px;
+  height: 365px;
+  angle: 0 deg;
+  opacity: 1;
+  background-color: #f7f0f0dc;
+  margin-top: 50px;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .res-information
+  .info-title {
+  width: 334px;
+  height: 38px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .res-information
+  .info-text {
+  margin-top: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding: 15px;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .res-information
+  .btn-close {
+  margin-top: 90px;
+  width: 150px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 5px;
+  font-family: Poppins, san-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  color: white;
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 200px;
+}
+
+.confirmation .box .confirmation-section .data-section .data-order .data-title {
+  width: 136px;
+  height: 38px;
+  angle: 0 deg;
+  opacity: 1;
+  top: 716px;
+  left: 224px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-left: 15px;
+}
+
+.confirmation .box .confirmation-section .data-section .data-order .name-field {
+  width: 470px;
+  height: 100px;
+  angle: 0 deg;
+  opacity: 0.5;
+  left: 15px;
+  border-radius: 35px;
+  margin-top: 15px;
+  background-color: #f7f0f0dc;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .data-order
+  .surname-field {
+  width: 470px;
+  height: 100px;
+  angle: 0 deg;
+  opacity: 0.5;
+  left: 15px;
+  border-radius: 20px;
+  background-color: #f7f0f0dc;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .data-order
+  .button-phone {
+  border-width: 0px;
+  margin-left: 15px;
+  width: 45px;
+  angle: 0 deg;
+  opacity: 0.9;
+  border-radius: 20px;
+  background-color: #f7f0f0dc;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .data-order
+  .email-field {
+  width: 470px;
+  height: 100px;
+  angle: 0 deg;
+  opacity: 0.5;
+  left: 15px;
+  border-radius: 20px;
+  margin-top: 45px;
+  background-color: #f7f0f0dc;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .data-order
+  .request-field {
+  width: 465px;
+  height: 300px;
+  angle: 0 deg;
+  opacity: 0.5;
+  margin-left: 15px;
+  border-radius: 7px;
+  font-family: Poppins, san-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: normal;
+  text-align: left;
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  background-color: #f7f0f0dc;
+}
+
+.confirmation
+  .box
+  .confirmation-section
+  .data-section
+  .data-order
+  .btn-confirm {
+  margin-top: 50px;
+  width: 470px;
+  height: 100px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  background-color: rgba(255, 138, 0, 1);
+  color: white;
+  border-width: 0px;
 }

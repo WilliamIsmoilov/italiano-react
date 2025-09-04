@@ -7,6 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 
 export default function BookingForm(){
   const [date, setDate] = useState<Dayjs | null>(null);
@@ -68,7 +69,7 @@ const location = useLocation();
                               value={date}
                               onChange={(newValue) => setDate(newValue)}
                               disablePast
-                              format="YYYY_MM_DD"
+                              format=' DD MMMM YYYY'
                             />
                         </FormControl>
                         {/* Time Keeper */}
