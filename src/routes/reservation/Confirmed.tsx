@@ -10,7 +10,7 @@ export default function ConfirmedModal({ open, onClose }: ConfirmedModalProps) {
     const navigate = useNavigate();
     const handleClose = () => {
         onClose();
-        navigate('/')
+        navigate('/reservation')
     }
 
   return (

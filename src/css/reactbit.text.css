@@ -1,0 +1,24 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+.react-text {
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  font-family: Tinos;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
