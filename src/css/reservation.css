@@ -40,7 +40,7 @@
   width: 590px;
   height: 590px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f0f0f0, #ddd); /* Gradient border */
+  background: linear-gradient(135deg, #f0f0f0, #ddd);
   display: flex;
   align-items: center;
   justify-content: center;

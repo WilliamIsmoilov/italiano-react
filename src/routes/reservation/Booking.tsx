@@ -7,7 +7,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
 
 export default function BookingForm(){
   const [date, setDate] = useState<Dayjs | null>(null);
@@ -39,8 +38,6 @@ const location = useLocation();
                    component={'img'}
                    src="/images/reservation.jpg"
                     sx={{
-                        // marginTop:'100px',
-                        // marginLeft:'-70px',
                         width:'525px',
                         height:'525px',
                         display:'flex',
@@ -56,7 +53,7 @@ const location = useLocation();
                             Book a table
                         </Box>
 
-                        {/* Date Picker */}
+                        
                         <FormControl 
                          sx={{
                                mb:2,  
@@ -72,7 +69,8 @@ const location = useLocation();
                               format=' DD MMMM YYYY'
                             />
                         </FormControl>
-                        {/* Time Keeper */}
+                        
+
                          <FormControl 
                          sx={{
                                mb:2,  
@@ -87,7 +85,7 @@ const location = useLocation();
                             />    
                         </FormControl>
 
-                        {/* Party Size */}
+                        
                         <FormControl
                         sx={{
                                mb:2,  

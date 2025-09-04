@@ -49,6 +49,7 @@
   opacity: 1;
   gap: 40px;
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .home-navbar a {
