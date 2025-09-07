@@ -181,6 +181,7 @@
   flex-direction: column;
   width: 270px;
   border-radius: 35px;
+  background-color: #f7f0f09a;
 }
 
 .homepage .popular-dishes-frame .popular-section .cards-frame .card-section {
@@ -189,7 +190,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 35px;
-  background-color: #f1f1f1;
+  background-color: #f7f0f09a;
 }
 
 .homepage
@@ -319,7 +320,7 @@
   width: 192px;
   height: 74px;
   border-radius: 50px;
-  background-color: #e7eaf1ff;
+  background-color: #f7f0f09a;
   color: black;
   font-family: Poppins;
   font-weight: 400;

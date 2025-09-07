@@ -7,7 +7,7 @@ import Typography from '@mui/joy/Typography';
 import Container from '@mui/material/Container';
 import { CssVarsProvider } from '@mui/joy/styles';
 import { Box,  Stack  } from '@mui/material';
-import Pagination from '@mui/material/Pagination';
+import Pagination from '@mui/material/Pagination';;
 
 
 
@@ -15,7 +15,7 @@ import Pagination from '@mui/material/Pagination';
 const list = [
   {productName: 'Bruciola', imagePath: '/images/braciola.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
   {productName: 'Cuisine', imagePath: '/images/cuisine.jpg',  productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
-  {productName: 'Pasta', imagePath: '/images/pasta.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
+  {productName: 'Pasta', imagePath: '/images/pastanew.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
   {productName: 'Pizza', imagePath: '/images/pizza.jpeg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
   {productName: 'Pvristone', imagePath: '/images/pvristone.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
     {productName: 'Ricotta', imagePath: '/images/ricotta.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
@@ -70,6 +70,8 @@ export default function Popularmenu() {
         </div>
       </AspectRatio>
       <CardContent orientation="vertical">
+              <div style={{display:'flex', justifyContent: 'center'}}>⭐⭐⭐⭐</div>
+
         <Typography className='product-name' >{ele.productName}</Typography>
         <Typography 
         className='product-desc' >{ele.productDesc}</Typography>

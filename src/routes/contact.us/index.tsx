@@ -1,10 +1,14 @@
+import ContactPage from "./ContactMain";
+import '../../css/contact.css'
+import Map from "./Map"; 
+
 const ContactUsPage = () => {
-    return ( 
-    <section>
-        <h2 className="text-3xl font-bold mb-8">
-            Contact US
-        </h2>
-    </section> );
+    return ( <div className="contact">
+        <ContactPage/>
+        <Map/>
+
+    </div>
+     );
 }
  
 export default ContactUsPage;

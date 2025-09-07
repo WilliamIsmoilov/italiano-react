@@ -1,0 +1,143 @@
+.contact {
+  width: 100%;
+  height: auto;
+}
+
+.contact .contact-frame {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.contact .contact-frame .contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact .contact-frame .contact-section .contact-title {
+  width: 367px;
+  height: 92px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: Tinos;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 80px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-top: 120px;
+  color: #311f09;
+}
+
+.contact .contact-frame .contact-section .contact-desc {
+  width: 974px;
+  height: 76px;
+  angle: 0 deg;
+  opacity: 1;
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #5c4529;
+  margin-top: 50px;
+}
+
+.contact .contact-frame .contact-section .contact-inputs {
+  width: 1112px;
+  height: auto;
+  left: 164px;
+  angle: 0 deg;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact .contact-frame .contact-section .contact-inputs .contact-name {
+  width: 540px;
+  height: 100px;
+  left: 164px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 20px;
+  background-color: #d0ccc754;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  border-width: 0px;
+  padding-left: 20px;
+}
+
+.contact .contact-frame .contact-section .contact-inputs .contact-surname {
+  width: 540px;
+  height: 100px;
+  left: 164px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 20px;
+  background-color: #d0ccc754;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  border-width: 0px;
+  margin-left: 30px;
+  padding-left: 20px;
+}
+
+.contact .contact-frame .contact-section .contact-inputs .form-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.contact .contact-frame .contact-section .contact-inputs .contact-field {
+  width: 1110px;
+  height: 385px;
+  margin-top: 100px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+  border-width: 0px;
+  background-color: #d0ccc754;
+  opacity: 1;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.contact .contact-frame .contact-section .btn-contact {
+  width: 540px;
+  height: 100px;
+  angle: 0 deg;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  leading-trim: NONE;
+  line-height: 110.00000000000001%;
+  letter-spacing: 0%;
+  background-color: #ff8800ff;
+  color: #ffffff;
+  border-width: 0px;
+  margin-top: 120px;
+  margin-bottom: 60px;
+}

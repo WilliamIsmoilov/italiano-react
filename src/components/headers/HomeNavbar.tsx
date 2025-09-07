@@ -2,7 +2,7 @@
 import { NavLink } from "react-router";
 import { GiFullPizza } from "react-icons/gi";
 import "../../css/homeNavbar.css"
-import { Box, Button, colors, Container, Stack } from '@mui/material';
+import { Box, Button, Container, Stack } from '@mui/material';
 import Basket from "./Basket";
 
 
@@ -15,7 +15,7 @@ export default function HomeNavbar() {
         hover:text-[#FF8A00] hover:after:scale-x-100
     `.trim().replace(/\s+/g, ' ');
     const active = 'text-[#FF8A00] font-semibold ';
-    const authMember = true;
+    const authMember = null;
 
     return <div className="home-navbar">
         <Container className="navbar-container">

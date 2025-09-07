@@ -132,7 +132,7 @@ export default  function MealsPage(){
                     height:500, 
                     display:'flex', 
                     flexDirection:'column', 
-                    backgroundColor: '#e7eaf1ff',
+                    backgroundColor: '#f7f0f09a',
                     borderRadius:'35px',
                     transition:'0.3s',
                     '&:hover': {
@@ -148,7 +148,7 @@ export default  function MealsPage(){
                      
                     }}>
                     
-      <AspectRatio minHeight="270px" maxHeight="270px" sx={{display:'flex',  flexDirection:'column', width:'270px'}}>
+      <AspectRatio minHeight="270px" maxHeight="270px" sx={{display:'flex',  flexDirection:'column', width:'270px', borderRadius: '50%'}}>
         <div  className='popular-menu-card' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <img
           src={ele.imagePath}
