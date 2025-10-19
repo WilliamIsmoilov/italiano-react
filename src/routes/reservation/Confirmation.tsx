@@ -32,7 +32,6 @@ export default function ConfirmationForm() {
       open={true}
       onClose={handleClose}
       className='confirmation'
-      // Bu yerda siz modalni ustida joylashishini ta'minlaysiz
        sx={{
          display: 'flex',
          justifyContent: 'center',

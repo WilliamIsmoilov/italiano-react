@@ -64,9 +64,6 @@ export default function HomeNavbar() {
                         Logout
                     </Button>
                   )}   
-                    
-
-
                 </Stack>
             </Stack>
 

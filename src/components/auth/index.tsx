@@ -1,50 +1,40 @@
-import {  Fade, Modal, Stack } from "@mui/material";
-import { makeStyles } from "@material-ui/core/styles";
-import styled from '@emotion/styled';
+import { Modal, Box, Button, Container, Stack, TextField,  Typography, Checkbox } from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent:'center',
-    },
-
-    paper: {
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 2, 2),
-    },
-}))
-
-const ModalImg = styled.img`
-  width: 500px;
-  height: 100%;
-  border-radius: 10px;
-  background: #000;
-`;
-
-export default function LoginModal(){
-
-    const classes = useStyles()
-    return( <div className="login">
+export default function Login(){
+    return (
+       <div>
         <Modal
-         open={true}>
-            <Fade>
-                <Stack
-                 className={classes.paper}
-                 direction={'row'}
-                 sx={{width:'800px'}}
-                 >
+            open={true}
+            className='login'
+            >
+                <Box className='box-1'>        
+                        <Stack className='signup-section'>
+                            <Box className="login-title"> Login </Box>
+                            <Typography>Do have an account? Log in</Typography>
 
-                    <Stack sx={{}}>
+                            <Stack className='login-form'>
+                                <TextField
+                                   label="Email address"
+                                   variant="outlined"
+                                   className='email-field'
+                                />
 
-                    </Stack>
-                    <ModalImg src={'/images/auth.jpg'} alt="cake"/>
-                    
-                    
-                </Stack>
-                
-            </Fade>
+                                <TextField
+                                   label='Password'
+                                   variant='outlined'
+                                   className='password-field'
+                                />
+                            </Stack>
+                            <Stack>
+                                <Checkbox {...label} defaultChecked />
+                                <a href="http://">Forgot Password?</a>
+                            </Stack>
+
+
+                        </Stack>
+                </Box>
+
         </Modal>
-        </div> )
+       </div> 
+    )
 }
