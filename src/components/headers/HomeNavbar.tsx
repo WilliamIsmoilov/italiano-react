@@ -52,7 +52,7 @@ export default function HomeNavbar() {
                     </Box>
 
                     {/* Basket */}
-                    {/* <Basket/> */}
+                    <Basket/>
 
                     {!authMember? (<Box>
                     <Button 

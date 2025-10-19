@@ -138,3 +138,8 @@
   border-radius: 133px;
   color: white;
 }
+
+.home-navbar .hover-line .icon-button {
+  width: 45px;
+  height: 45px;
+}
