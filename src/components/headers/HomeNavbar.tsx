@@ -6,7 +6,10 @@ import { Box, Button, Container, Stack } from '@mui/material';
 import Basket from "./Basket";
 
 
+
 export default function HomeNavbar() {
+   
+
     const base = `
         relative inline-block text-current transition-colors duration-200
         after:content-[''] after:absolute after:left-0 after:bottom-0 
@@ -17,7 +20,8 @@ export default function HomeNavbar() {
     const active = 'text-[#FF8A00] font-semibold ';
     const authMember = null;
 
-    return <div className="home-navbar">
+    return (
+    <div className="home-navbar">
         <Container className="navbar-container">
             <Stack className="menu">
                 <Box>
@@ -69,6 +73,7 @@ export default function HomeNavbar() {
 
         </Container>
     </div>
+    )
 }
 
 // const Navbar = () => {

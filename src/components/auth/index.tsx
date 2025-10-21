@@ -1,4 +1,4 @@
-import { Modal, Box, Button, Container, Stack, TextField,  Typography, Checkbox } from '@mui/material';
+import { Modal, Box, Button, Container, Stack, TextField,  Typography, } from '@mui/material';
 
 export default function Login(){
     return (
@@ -26,14 +26,10 @@ export default function Login(){
                                 />
                             </Stack>
                             <Stack>
-                                <Checkbox {...label} defaultChecked />
-                                <a href="http://">Forgot Password?</a>
+                                
                             </Stack>
-
-
                         </Stack>
                 </Box>
-
         </Modal>
        </div> 
     )

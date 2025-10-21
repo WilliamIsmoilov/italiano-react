@@ -16,6 +16,7 @@ export default function Basket(){
         <Box className = {'hover-line'}>
             <IconButton className="icon-button"
             aria-label="cart"
+            // eslint-disable-next-line no-constant-condition
             aria-controls={ true ? 'basic-menu' : undefined}
             aria-haspopup="true"
             style={{width:"45px", height:'45px'}}>
