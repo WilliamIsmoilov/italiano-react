@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */;
 import { NavLink } from "react-router";
 import { GiFullPizza } from "react-icons/gi";
-import "../../css/homeNavbar.css"
+import "../../css/homeNavbar.css";
 import { Box, Button, Container, Stack } from '@mui/material';
 import Basket from "./Basket";
 
