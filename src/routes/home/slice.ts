@@ -16,3 +16,6 @@ const homePageSlice = createSlice({
 })
 
 export const{setPopularMenu} = homePageSlice.actions
+
+const HomePageReducer = homePageSlice.reducer;
+export default HomePageReducer;
