@@ -7,6 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useLocation, useNavigate } from 'react-router-dom';
+import dayjs from "dayjs";
 
 export default function BookingForm(){
   const [date, setDate] = useState<Dayjs | null>(null);
@@ -81,6 +82,10 @@ const location = useLocation();
                             <TimePicker
                                label='Time'
                                value={time}
+                               ampm={false}
+                               minTime={dayjs('09:00', 'HH')}
+                               maxTime={dayjs('23:00', 'HH')}
+                               minutesStep={5}
                                onChange={(newTime) => setTime(newTime)}
                             />    
                         </FormControl>
@@ -107,7 +112,7 @@ const location = useLocation();
                                 fontSize:'16px'
                             }}
                             min={1}
-                            max={10}
+                            max={20}
                             />
                         </FormControl>
 

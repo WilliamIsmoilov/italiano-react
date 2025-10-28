@@ -33,12 +33,15 @@ export default  function ContactPage(){
                     name="email"
                     />
 
-                    <input
+                    <select
                     className="contact-surname"
-                    type="text"
-                    placeholder="Subject"
-                    name="email"
-                    />
+                    name="subject"
+                    >
+                        <option value="RECOMMENDATION" >Recommendation</option>
+                        <option value="COMPLAINT">Complaint</option>
+                        <option value="ACKNOWLEDGEMENT">Acknowledgement</option>
+                        <option value="REQUEST">Request</option>
+                        </select>
                  </div>
 
 

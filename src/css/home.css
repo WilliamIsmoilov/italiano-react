@@ -191,6 +191,7 @@
   flex-direction: column;
   border-radius: 35px;
   background-color: #f7f0f09a;
+  cursor: pointer;
 }
 
 .homepage

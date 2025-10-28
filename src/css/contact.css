@@ -84,6 +84,7 @@
   left: 164px;
   angle: 0 deg;
   opacity: 1;
+  color: #747474ff;
   border-radius: 20px;
   background-color: #d0ccc754;
   font-family: Poppins, sans-serif;
@@ -140,4 +141,5 @@
   border-width: 0px;
   margin-top: 120px;
   margin-bottom: 60px;
+  cursor: pointer;
 }
