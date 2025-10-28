@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import { CssVarsProvider } from '@mui/joy/styles';
 import { Box,  Stack  } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 import { useSelector} from 'react-redux';
@@ -88,7 +89,7 @@ export default function Popularmenu() {
           color="primary"
           aria-label="Explore Bahamas Islands"
         >
-          Order now
+          Order now<ShoppingCartIcon/>
         </Button>
         </Stack>
         

@@ -245,7 +245,7 @@
   font-weight: 700;
   width: 79px;
   height: 38px;
-  font-size: 25px;
+  font-size: 23px;
 }
 
 .homepage
@@ -272,9 +272,10 @@
   align-self: center;
   font-weight: 600;
   width: 157px;
-  height: 55px;
+  height: 50px;
   border-radius: 50px;
   background-color: #ff8a00;
+  justify-content: space-around;
 }
 
 .homepage

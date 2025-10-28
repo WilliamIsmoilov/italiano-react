@@ -14,20 +14,23 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 
 
-const list = [
-    {productName: 'Spaghetti', imagePath: '/images/orderpasta1.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Linguine', imagePath: '/images/orderpasta2.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Capelli', imagePath: '/images/orderpasta3.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Fettuccine', imagePath: '/images/orderpasta4.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Bucatini', imagePath: '/images/orderpasta5.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Tortellini', imagePath: '/images/orderpasta6.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Fusili', imagePath: '/images/orderpasta7.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Farfalle', imagePath: '/images/orderpasta8.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'},
-    {productName: 'Penne Alla Vodak', imagePath: '/images/orderpasta1.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat'}
-    
-]
+
+
+import { useSelector} from 'react-redux';
+import { createSelector } from 'reselect';
+import { retrieveAllProducts } from './selector';
+import { serverApi } from '../../libs/config';
+import type { Product } from '../../libs/types/product';
+
+const allProductsRetriever = createSelector(
+    retrieveAllProducts, (allProducts) => ({allProducts})
+)
+
 
 export default function OrderOnline() {
+ const {allProducts} = useSelector(allProductsRetriever)
+
+
     return ( <div className="order-frame">
         <Container>
             <Stack className='order-section'>
@@ -63,10 +66,11 @@ export default function OrderOnline() {
                 </Stack>
                 <Stack className="products-section">
                     <Stack className="cards-frame">
-                        {list.length !== 0 ? (
-                            list.map((ele,index) => {
+                        {allProducts.length !== 0 ? (
+                            allProducts.map((ele: Product) => {
+                                const imagePath = `${serverApi}/${ele.productImages[0]}`
                                 return (
-                                    <CssVarsProvider key={index} >
+                                    <CssVarsProvider key={ele._id} >
                                         <Card   className='card-section'
                                         sx={{
                                             transition:'0.3s',
@@ -77,7 +81,7 @@ export default function OrderOnline() {
                                             <AspectRatio minHeight='174px'  maxHeight='174px' className='aspectRatio'>
                                                 <div className='menu-card'>
                                                     <img
-                                                      src={ele.imagePath}
+                                                      src={imagePath}
                                                       alt='meals'
                                                       style={{objectFit: 'cover', borderRadius: '35px'}}
                                                       />
@@ -89,7 +93,7 @@ export default function OrderOnline() {
                                                  <Typography 
                                                   className='product-desc' >{ele.productDesc}</Typography>
                                                  <Stack  className='bottom-card-comp'>
-                                                 <Typography className='price' >$2,900</Typography>
+                                                 <Typography className='price' >$ {ele.productPrice}</Typography>
                                                  <Button
                                                    className='order-btn'
                                                    size="md"

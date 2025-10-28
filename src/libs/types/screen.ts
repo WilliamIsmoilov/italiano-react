@@ -3,7 +3,8 @@
 import type { Product } from "./product";
 
 export interface AppRootState{
-    homePage: HomePageState
+    homePage: HomePageState,
+    orderOnline: OrderOnlineState
 }
 
 /**  home page screen**/
@@ -12,3 +13,6 @@ export interface HomePageState{
 }
 
 /**  products page screen **/
+export interface OrderOnlineState{
+    allProducts: Product[]
+}
