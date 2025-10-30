@@ -51,15 +51,12 @@ export default  function ContactPage(){
                 />                   
 
                 </Stack>
-
                 <button
                 type="submit"
                 className="btn-contact">
                     Submit
-                </button>
-                
-            </Stack>
-            
+                </button>                
+            </Stack>            
         </Container>
 
     </div>

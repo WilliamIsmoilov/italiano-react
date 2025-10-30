@@ -1,21 +1,14 @@
 // ReservationList.tsx
 import React from 'react';
 import TextType from '../reactBits/reservation/text';
+import { Box, Stack, Container } from '@mui/material';
 
-type Reservation = {
-  id: number | string;
-  name: string;
-  email: string;
-  date: string;
-  time: string;
-  partySize: number;
-};
+const reservation= [
+  {name: 'Ismoilov Sardor', email: 'isome2517@gmail.com', date:'2025-10-25'}
 
-type Props = {
-  reservations: Reservation[];
-};
+]
 
-export default function ReservationList({ reservations }: Props) {
+export default function ReservationList() {
   return (
     <div className="reservation-list">
      <TextType 
@@ -26,21 +19,37 @@ export default function ReservationList({ reservations }: Props) {
   showCursor={true}
   cursorCharacter="|"
 />
-      {reservations.length === 0 ? (
-        <p>No reservations yet.</p>
-      ) : (
-        <ul>
-          {reservations.map((res) => (
-            <li key={res.id} className="reservation-item">
-              <p><strong>Name:</strong> {res.name}</p>
-              <p><strong>Email:</strong> {res.email}</p>
-              <p><strong>Date:</strong> {res.date}</p>
-              <p><strong>Time:</strong> {res.time}</p>
-              <p><strong>Party Size:</strong> {res.partySize}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+
+<Container>
+  <Stack className='reservation-section'>
+    <div className='heading'>
+      <Box className='title'>
+        Your Reservation
+      </Box>
+    </div>
+    <Box className='info-box'>
+      <img src="/images/auth.jpg" className='img-rest' />
+      <div className='info-section'>
+        <div className='info-row-1'>
+        <strong className='name'>Ismoilov Sardor</strong>
+        <strong className='name'>isome2517@gmail.com</strong>
+      </div>
+      <div className='info-row-2'>
+        <strong className='name'>19 : 30</strong>
+        <strong className='name'> 2025 October 13</strong>
+      </div>
+      </div>
+      
+    </Box>
+    <Stack className='btn-box'>
+      <button type='submit' className='modify-btn'>Modify</button>
+      <button type='submit' className='cancel-btn'>Cancel</button>
+    </Stack>
+
+  </Stack>
+  </Container>
+
+      
     </div>
   );
 }
