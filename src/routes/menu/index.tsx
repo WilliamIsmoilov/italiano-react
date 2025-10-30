@@ -1,9 +1,14 @@
 import MealsPage from "./MealsPage";
 import "../../css/menu.css";
+import ChosenProduct from "./ChosenProduct";
+import {  Routes, Route } from 'react-router-dom';
 
 export default function MenuPage(){
     return( <div className="menupage">
-        <MealsPage/>
+        <Routes>
+            <Route path="" element={<MealsPage/>}/>
+            <Route path=":id" element={<ChosenProduct/>}/>
+        </Routes>
     </div>
 
     )

@@ -32,6 +32,7 @@ export default  function MealsPage(){
   const searchProductHandler = () => {
     console.log("Searching:", searchText);
   };
+
     return(<div className="meal-frame">
         <Container>
             <Stack className="meal-section">
@@ -126,8 +127,9 @@ export default  function MealsPage(){
             {list.length !== 0 ? ( 
               list.map((ele, index) => {
               return (
-                <CssVarsProvider >
-                  <Card key={index} sx={{ 
+                <CssVarsProvider key={index} >
+                  <Card 
+                     sx={{ 
                     width: 270,
                     height:500, 
                     display:'flex', 
