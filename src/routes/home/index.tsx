@@ -41,7 +41,6 @@ const HomePage = () => {
         <BrandPage/>
         <BrandPages/>
         <PopularMenu/>
-        <Reservation/>
         <OpenDays/>
     </div>
     

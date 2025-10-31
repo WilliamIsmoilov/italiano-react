@@ -4,6 +4,10 @@ import TextType from '../reactBits/reservation/text';
 import { Box, Stack, Container } from '@mui/material';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import CloseIcon from '@mui/icons-material/Close';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 const reservation= [
   {name: 'Ismoilov Sardor', email: 'isome2517@gmail.com', date:'2025 December 27', time: '18 : 25'},
@@ -38,12 +42,12 @@ export default function ReservationList() {
           <div className='info-col'>
             <div className='info-section'>
               <div className='info-row-1'>
-                <strong className='name'>{ele.name}</strong>
-                <strong className='name'>{ele.email}</strong>
+                <strong className='name'><PermIdentityIcon style={{ textAlign:'center', marginTop:'3px', color:'black'}}/>  {ele.name}</strong>
+                <strong className='name'><AlternateEmailIcon style={{ textAlign:'center', marginTop:'3px', color:'black'}}/>  {ele.email}</strong>
               </div>
               <div className='info-row-2'>
-                <strong className='name'>{ele.time}</strong>
-                <strong className='name'> {ele.date}</strong>
+                <strong className='name'><AccessTimeIcon  style={{ textAlign:'center', marginTop:'3px', color:'black'}}/>  {ele.time}</strong>
+                <strong className='name'><CalendarTodayIcon style={{ textAlign:'center', marginTop:'3px', color:'black'}}/> {ele.date}</strong>
               </div>
             </div>
             <div className='btn-section'>

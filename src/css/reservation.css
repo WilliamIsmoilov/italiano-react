@@ -527,8 +527,12 @@
   text-align: center;
   border: 3px solid #ff8a00;
   border-radius: 14px;
-  color: black;
+  color: #5c45298f;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 10px;
 }
 
 .reservation-list .reservation-section .info-section .info-row-2 {
@@ -542,9 +546,13 @@
   margin-top: 40px;
   border: 3px solid #ff8a00;
   border-radius: 14px;
-  color: black;
+  color: #5c45298f;
   font-size: 20px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 10px;
 }
 
 .reservation-list .reservation-section .info-box .img-rest {

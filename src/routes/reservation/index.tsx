@@ -3,8 +3,6 @@ import "../../css/reservation.css"
 import {  Routes, Route, useLocation } from 'react-router-dom';
 import ConfirmationForm from "./Confirmation";
 import ReservationList from "./ReservationList";
-import React from 'react';
-
 
 export default function ReservationPage(){
     const location = useLocation()
