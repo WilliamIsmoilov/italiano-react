@@ -9,25 +9,6 @@ import React from 'react';
 export default function ReservationPage(){
     const location = useLocation()
       const state = location.state as { backgroundLocation?: Location };
-const [reservations, setReservations] = React.useState([
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john@example.com",
-      date: "2025-09-05",
-      time: "19:00",
-      partySize: 4,
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      date: "2025-09-10",
-      time: "20:30",
-      partySize: 2,
-    }
-  ]);
-
     return(<div className="reservation">
             <Routes location={state?.backgroundLocation || location}>
                <Route path='/' element={<BookingForm/>}/> 
@@ -39,7 +20,7 @@ const [reservations, setReservations] = React.useState([
                 </Routes>
             )}
 
-            <ReservationList reservations={reservations} />
+            <ReservationList />
 
         {/* <BookingForm/> */}
     </div>
