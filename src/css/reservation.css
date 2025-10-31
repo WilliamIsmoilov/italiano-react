@@ -459,7 +459,9 @@
   border-width: 0px;
 }
 
-
+.reservation-list {
+  margin-bottom: 40px;
+}
 .reservation-list .reservation-section {
   display: flex;
   justify-content: center;
@@ -469,15 +471,15 @@
   margin-top: 60px;
 }
 
-.reservation-list .reservation-section .heading{
+.reservation-list .reservation-section .heading {
   background: #ff8a00;
-  width:100%;
+  width: 100%;
   height: 45px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
 
-.reservation-list .reservation-section .heading .title{
+.reservation-list .reservation-section .heading .title {
   padding: 10px;
   font-size: 20px;
   color: white;
@@ -495,49 +497,104 @@
   flex-direction: row;
 }
 
-.reservation-list .reservation-section .info-section{
-  width: 62%;
+.reservation-list .reservation-section .info-col {
   display: flex;
-  flex-direction: row;
-  margin-left:40px;
+  flex-direction: column;
+  width: 68%;
 }
 
-.reservation-list .reservation-section .info-section .info-row-1{
+.reservation-list .reservation-section .info-col .info-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 40px;
+}
+
+.reservation-list .reservation-section .info-section .info-row-1 {
   display: flex;
   flex-direction: column;
   width: 50%;
   margin-left: -15px;
 }
 
-.reservation-list .reservation-section .info-section .info-row-1 .name{
-  width: 95%;
+.reservation-list .reservation-section .info-section .info-row-1 .name {
+  width: 80%;
   height: 40px;
   margin-top: 40px;
   text-align: center;
-  background: #ff8a00;
+  border: 3px solid #ff8a00;
   border-radius: 14px;
-  color: white;
+  color: black;
   font-size: 20px;
 }
 
-.reservation-list .reservation-section .info-section .info-row-2{
+.reservation-list .reservation-section .info-section .info-row-2 {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
-.reservation-list .reservation-section .info-section .info-row-2 .name{
-  width: 95%;
+.reservation-list .reservation-section .info-section .info-row-2 .name {
+  width: 80%;
   height: 40px;
   margin-top: 40px;
-  text-align: center;
-  background: #ff8a00;
+  border: 3px solid #ff8a00;
   border-radius: 14px;
-  color: white;
+  color: black;
   font-size: 20px;
+  text-align: center;
 }
 
-
-
-.reservation-list  .reservation-section .info-box .img-rest {
+.reservation-list .reservation-section .info-box .img-rest {
   width: 38%;
+}
+
+.reservation-list .reservation-section .info-col .btn-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+.reservation-list .reservation-section .info-col .btn-section .modify-btn {
+  width: 30%;
+  height: 60px;
+  angle: 0 deg;
+  opacity: 70%;
+  margin-left: 90px;
+  border-radius: 20px;
+  background: #0074ff;
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.1; /* 110% = 1.1 */
+  letter-spacing: 0;
+}
+
+.reservation-list .reservation-section .info-col .btn-section .cancel-btn {
+  width: 30%;
+  height: 60px;
+  angle: 0 deg;
+  opacity: 70%;
+  margin-right: 90px;
+  background: #ea1010;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.reservation-list .reservation-section .info-col .btn-section button {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.1;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
