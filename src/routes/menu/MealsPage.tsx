@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {   IconButton, Input,  } from "@mui/material";;
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
@@ -14,18 +15,47 @@ import { CssVarsProvider } from '@mui/joy/styles';
 import { Box,  Stack  } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { setGetProducts } from './slice';
+import type { Product } from "../../libs/types/product";
+import type { Member } from "../../libs/types/member";
+import { useEffect } from 'react';
+import {useDispatch} from 'react-redux';
+import { createSelector, type Dispatch } from '@reduxjs/toolkit';
+import { retrieveGetProducts } from "./selector";
+import { useSelector} from 'react-redux';
+import { serverApi } from '../../libs/config';
+import ProductService from "../../services/ProductService";
+import { ProductCollection } from "../../libs/enum/product.enum";
 
 
-const list = [
-  {productName: 'Bruciola', imagePath: '/images/braciola.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
-  {productName: 'Cuisine', imagePath: '/images/cuisine.jpg',  productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
-  {productName: 'Pasta', imagePath: '/images/pasta.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
-  {productName: 'Pizza', imagePath: '/images/pizza.jpeg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
-  {productName: 'Pvristone', imagePath: '/images/pvristone.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
-    {productName: 'Ricotta', imagePath: '/images/ricotta.jpg', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. ' },
-]
+
+const actionDispatch = (dispatch: Dispatch) => ({
+  setGetProducts: (data: Product[]) => dispatch(setGetProducts(data)),
+})
+
+const getProductsRetriever = createSelector(
+  retrieveGetProducts, (getProducts) => ({getProducts})
+)
+
+
 
 export default  function MealsPage(){
+const {setGetProducts} = actionDispatch(useDispatch()) 
+useEffect(() => {
+  const product = new ProductService();
+  product.getProducts({
+    page: 1,
+    limit: 6,
+    order: 'createdAt',
+    search: '',
+    productCollection: ProductCollection.LUNCH
+  }).then( data => {
+    setGetProducts(data)
+  }).catch( err => console.log(err))
+})
+
+const {getProducts} = useSelector(getProductsRetriever)
+
     const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
@@ -124,10 +154,11 @@ export default  function MealsPage(){
 
 
   <Stack className='cards-frame'>
-            {list.length !== 0 ? ( 
-              list.map((ele, index) => {
+            {getProducts.length !== 0 ? ( 
+              getProducts.map((ele: Product) => {
+                const imagePath = `${serverApi}/${ele.productImages[0]}`
               return (
-                <CssVarsProvider key={index} >
+                <CssVarsProvider key={ele._id} >
                   <Card 
                      sx={{ 
                     width: 270,
@@ -153,7 +184,7 @@ export default  function MealsPage(){
       <AspectRatio minHeight="270px" maxHeight="270px" sx={{display:'flex',  flexDirection:'column', width:'270px', borderRadius: '50%'}}>
         <div  className='popular-menu-card' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <img
-          src={ele.imagePath}
+          src={imagePath}
           alt="pictures"
           style={{  objectFit: 'cover'}}
         />
@@ -191,7 +222,7 @@ export default  function MealsPage(){
             width:'79px', 
             height:'38px', 
             fontSize:'25px'
-            }}>$2,900</Typography>
+            }}>$ {ele.productPrice}</Typography>
         <Button
         className="order-btn"
           size="md"

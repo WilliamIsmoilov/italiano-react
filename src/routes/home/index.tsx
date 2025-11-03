@@ -4,7 +4,6 @@ import BrandPage from './BrandPage';
 import BrandPages from './BrandPages';
 import PopularMenu from './PopularMenu';
 import "../../css/home.css";
-import Reservation from './Reservation';
 import OpenDays from './OpenDay';
 import { useEffect } from 'react';
 import {useDispatch} from 'react-redux';

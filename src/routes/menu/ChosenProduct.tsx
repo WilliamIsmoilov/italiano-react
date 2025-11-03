@@ -1,5 +1,34 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Button, Container, Rating, Stack } from "@mui/material";
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+
+
+import type { Member } from "../../libs/types/member";
+import { useEffect } from 'react';
+import {useDispatch} from 'react-redux';
+import { createSelector, type Dispatch } from '@reduxjs/toolkit';
+import { retrieveChosenProduct, retrieveRestaurant } from "./selector";
+import { useSelector} from 'react-redux';
+import { serverApi } from '../../libs/config';
+import { setChosenProduct, setRestaurant } from "./slice";
+import type { Product } from "../../libs/types/product";
+
+
+
+const actionDispatch = (dispatch: Dispatch) => ({
+  setChosenProduct: (data: Product[]) => dispatch(setChosenProduct(data)),
+  setRestaurant: (data: Member[]) => dispatch(setRestaurant(data))
+})
+
+const chosenProductRetriever = createSelector(
+  retrieveChosenProduct, (chosenProduct) => ({chosenProduct})
+)
+const restaurantRetriever = createSelector(
+  retrieveRestaurant, (restaurant) => ({restaurant})
+)
+
+
 
 const list = [
   {productName: 'Bruciola', imagePath: '/images/orderpasta1.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
