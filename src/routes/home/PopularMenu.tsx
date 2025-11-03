@@ -12,23 +12,58 @@ import Pagination from '@mui/material/Pagination';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
-import { useSelector} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { createSelector } from 'reselect';
 import { retrievePopularMenu } from './selector';
 import { serverApi } from '../../libs/config';
-import type { Product } from '../../libs/types/product';
+import type { Product, ProductInquery } from '../../libs/types/product';
+import { setPopularMenu } from './slice';
+import type { Dispatch } from '@reduxjs/toolkit';
+import { useState } from 'react';
+import { ProductCollection } from '../../libs/enum/product.enum';
+import ProductService from '../../services/ProductService';
+import { useEffect } from 'react';
 
 
 
 const popularMenuRetriever = createSelector(
     retrievePopularMenu, (popularMenu) => ({popularMenu}))
 
-
+    const actionDispatch = (dispatch: Dispatch) => ({
+        setPopularMenu: (data: Product[]) => dispatch(setPopularMenu(data))
+    })
 
 
 export default function Popularmenu() {
-  const {popularMenu} = useSelector(popularMenuRetriever)
-  console.log('products:', popularMenu)
+  const {setPopularMenu} = actionDispatch(useDispatch())
+  const [productSearch, setProductSearch] = useState<ProductInquery>({
+      page: 1,
+      limit: 6,
+      order: 'createdAt',
+      productCollection: ProductCollection.DINNER,
+      search: ''
+    })
+
+    useEffect(() => {
+      const popularMenu = new ProductService();
+      popularMenu.getProducts(
+        productSearch
+      ).then(data => {
+        setPopularMenu(data)
+      }).catch(err => console.log(err))
+    }, [productSearch])
+
+    const {popularMenu} = useSelector(popularMenuRetriever);
+
+
+    //**    Handler **//////////////////////////
+
+    const searchCollectionHandler = (collection: ProductCollection) => {
+      productSearch.page = 1;
+      productSearch.productCollection = collection;
+      setProductSearch({...productSearch})
+    }
+  
     return ( <div className="popular-dishes-frame">
 
       <Container>
@@ -38,20 +73,25 @@ export default function Popularmenu() {
           <Stack className="list-category-section" flexDirection={"row"}>
                     <Stack className="product-category" >
                     <div className="category-main" >
-                        <Button className='button-card-all'>
-                            All Category 
+                        <Button className='button-card-all'
+                        onClick={() => searchCollectionHandler(ProductCollection.DINNER)}>
+                            Dinner
                         </Button>
                         
-                        <Button className='button-card'>
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}>
                             Dessert
                         </Button>
-                        <Button className='button-card'>
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.LUNCH)}>
                             Lunch
                         </Button>
-                        <Button className='button-card'> 
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.DRINK)}> 
                             Drink
                         </Button>
-                        <Button className='button-card'>
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.SALAD)}>
                             Salad
                         </Button>
                     </div>

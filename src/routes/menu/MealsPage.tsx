@@ -16,8 +16,7 @@ import { Box,  Stack  } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { setGetProducts } from './slice';
-import type { Product } from "../../libs/types/product";
-import type { Member } from "../../libs/types/member";
+import type { Product, ProductInquery } from "../../libs/types/product";
 import { useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import { createSelector, type Dispatch } from '@reduxjs/toolkit';
@@ -41,21 +40,34 @@ const getProductsRetriever = createSelector(
 
 export default  function MealsPage(){
 const {setGetProducts} = actionDispatch(useDispatch()) 
+const [productSearch, setProductSearch] = useState<ProductInquery>({
+  page: 1,
+  limit: 6,
+  order: 'createdAt',
+  productCollection: ProductCollection.LUNCH,
+  search: ''
+
+})
 useEffect(() => {
   const product = new ProductService();
-  product.getProducts({
-    page: 1,
-    limit: 6,
-    order: 'createdAt',
-    search: '',
-    productCollection: ProductCollection.LUNCH
-  }).then( data => {
+  product.getProducts(
+    productSearch
+  ).then( data => {
     setGetProducts(data)
   }).catch( err => console.log(err))
-})
+}, [productSearch]);
 
 const {getProducts} = useSelector(getProductsRetriever)
 
+/** handlers**//////////////////////////////////////////////////
+const searchCollectionHandler = (collection: ProductCollection) => {
+  productSearch.page = 1;
+  productSearch.productCollection = collection;
+  setProductSearch({...productSearch})
+}
+
+
+//////////////////////////////////////
     const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
@@ -131,20 +143,25 @@ const {getProducts} = useSelector(getProductsRetriever)
     <Stack className="list-category-section" flexDirection={"row"}>
                     <Stack className="product-category" >
                     <div className="category-main" >
-                        <Button className='button-card-all'>
-                            All Category 
+                        <Button className='button-card-all'
+                         onClick= {() => searchCollectionHandler(ProductCollection.DINNER)} >
+                            Dinner 
                         </Button>
                         
-                        <Button className='button-card'>
+                        <Button className='button-card'
+                         onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}>
                             Dessert
                         </Button>
-                        <Button className='button-card'>
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.LUNCH)}>
                             Lunch
                         </Button>
-                        <Button className='button-card'> 
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.DRINK)}> 
                             Drink
                         </Button>
-                        <Button className='button-card'>
+                        <Button className='button-card'
+                        onClick={() => searchCollectionHandler(ProductCollection.SALAD)}>
                             Salad
                         </Button>
                     </div>
