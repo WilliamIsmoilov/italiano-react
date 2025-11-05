@@ -143,24 +143,38 @@ const searchCollectionHandler = (collection: ProductCollection) => {
     <Stack className="list-category-section" flexDirection={"row"}>
                     <Stack className="product-category" >
                     <div className="category-main" >
-                        <Button className='button-card-all'
+                        <Button className='button-card'
+                        sx={{ backgroundColor: productSearch.productCollection === ProductCollection.DINNER ? ' #311f09' : '#f7f0f09a',
+                           color: productSearch.productCollection === ProductCollection.DINNER ? '#fff' : '#413d3dff' }}
                          onClick= {() => searchCollectionHandler(ProductCollection.DINNER)} >
                             Dinner 
                         </Button>
                         
                         <Button className='button-card'
+                         sx={{ backgroundColor: productSearch.productCollection === ProductCollection.DESSERT ? ' #311f09' : '#f7f0f09a',
+                          color: productSearch.productCollection === ProductCollection.DESSERT ? '#fff' : '#413d3dff'
+                         }}
                          onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}>
                             Dessert
                         </Button>
                         <Button className='button-card'
+                         sx={{ backgroundColor: productSearch.productCollection === ProductCollection.LUNCH ? ' #311f09' : '#f7f0f09a',
+                          color: productSearch.productCollection === ProductCollection.LUNCH ? '#fff' : '#413d3dff'
+                          }}
                         onClick={() => searchCollectionHandler(ProductCollection.LUNCH)}>
                             Lunch
                         </Button>
                         <Button className='button-card'
+                        sx={{ backgroundColor: productSearch.productCollection === ProductCollection.DRINK ? ' #311f09' : '#f7f0f09a',
+                          color: productSearch.productCollection === ProductCollection.DRINK ? '#fff' : '#413d3dff'
+                         }}
                         onClick={() => searchCollectionHandler(ProductCollection.DRINK)}> 
                             Drink
                         </Button>
                         <Button className='button-card'
+                        sx={{ backgroundColor: productSearch.productCollection === ProductCollection.SALAD ? ' #311f09' : '#f7f0f09a',
+                          color: productSearch.productCollection === ProductCollection.SALAD ? '#fff' : '#413d3dff'
+                         }}
                         onClick={() => searchCollectionHandler(ProductCollection.SALAD)}>
                             Salad
                         </Button>

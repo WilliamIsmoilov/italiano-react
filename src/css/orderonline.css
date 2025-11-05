@@ -58,30 +58,12 @@
   border-radius: 162px;
   border-width: 0px;
   font-family: Poppins, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-  leading-trim: NONE;
-  line-height: 200%;
-  letter-spacing: 0%;
-}
-
-.order .order-frame .order-section .list-btns .sort-btns .btn-focus {
-  width: 192px;
-  height: 74px;
-  angle: 0 deg;
-  opacity: 1;
-  border-radius: 162px;
-  border-width: 0px;
-  font-family: Poppins, sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 20px;
   leading-trim: NONE;
   line-height: 200%;
   letter-spacing: 0%;
-  color: #ffffff;
-  background-color: #000000;
 }
 
 .order .order-frame .order-section .products-section {
@@ -144,7 +126,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: ;
 }
 
 .order .order-frame .order-section .products-section .product-name {
@@ -173,11 +154,13 @@
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-size: 14px;
-  leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 10%;
   text-align: center;
   color: #5c4529;
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: normal;
 }
 
 .order .order-frame .order-section .products-section .bottom-card-comp {

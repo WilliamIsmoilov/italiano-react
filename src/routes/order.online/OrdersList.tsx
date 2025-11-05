@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Button from '@mui/joy/Button';
@@ -13,14 +14,23 @@ import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 
-
-
-
 import { useSelector} from 'react-redux';
 import { createSelector } from 'reselect';
 import { retrieveAllProducts } from './selector';
 import { serverApi } from '../../libs/config';
-import type { Product } from '../../libs/types/product';
+import type { Product, ProductInquery } from "../../libs/types/product";
+import { useEffect, useState } from 'react';
+import {useDispatch} from 'react-redux';
+import { type Dispatch } from '@reduxjs/toolkit';
+import ProductService from "../../services/ProductService";
+import { ProductCollection } from "../../libs/enum/product.enum";
+import { setAllProducts } from './slice';
+import { data } from 'react-router';
+
+const actionDispatch = (dispatch: Dispatch) => ({
+    setAllProducts: (data: Product[]) => dispatch(setAllProducts(data))
+})
+
 
 const allProductsRetriever = createSelector(
     retrieveAllProducts, (allProducts) => ({allProducts})
@@ -28,9 +38,33 @@ const allProductsRetriever = createSelector(
 
 
 export default function OrderOnline() {
+    const {setAllProducts} = actionDispatch(useDispatch())
+    const [productSearch, setProductSearch] = useState<ProductInquery>({
+        page: 1,
+        limit: 9,
+        order: '-productPrice',
+        productCollection: ProductCollection.DINNER,
+    })
+
+    useEffect(() => {
+        const product = new ProductService();
+        product.getProducts(
+            productSearch
+        ).then( data => {
+            setAllProducts(data)
+        }).catch( err => console.log(err))
+    }, [productSearch])
+
  const {allProducts} = useSelector(allProductsRetriever)
 
+ ///////// HANDLER ///////////
+ const searchCollectionHandler = (collection: ProductCollection)  => {
+    productSearch.page =1;
+    productSearch.productCollection = collection;
+    setProductSearch({...productSearch})
+ }
 
+///////////////////////////////////////////////////////
     return ( <div className="order-frame">
         <Container>
             <Stack className='order-section'>
@@ -40,26 +74,46 @@ export default function OrderOnline() {
                     <button
                        type='button'
                        className='btn-main'
-                       >All Catagory</button>
-
-                       <button
-                       type='button'
-                       className='btn-focus'
+                       onClick={() => searchCollectionHandler(ProductCollection.DINNER)}
+                       style={{backgroundColor: productSearch.productCollection === ProductCollection.DINNER ? '#000000' : '#f7f0f09a',
+                        color: productSearch.productCollection === ProductCollection.DINNER ? '#ffffff' : '#000000'
+                       }}
                        >Dinner</button>
 
                        <button
                        type='button'
                        className='btn-main'
+                       onClick={() => searchCollectionHandler(ProductCollection.LUNCH)}
+                       style={{backgroundColor: productSearch.productCollection === ProductCollection.LUNCH ? '#000000' : '#f7f0f09a',
+                        color: productSearch.productCollection === ProductCollection.LUNCH ? '#ffffff' : '#000000'
+                       }}
                        >Lunch</button>
 
                        <button
                        type='button'
                        className='btn-main'
+                       onClick={() => searchCollectionHandler(ProductCollection.SALAD)}
+                       style={{backgroundColor: productSearch.productCollection === ProductCollection.SALAD ? '#000000' : '#f7f0f09a',
+                        color: productSearch.productCollection === ProductCollection.SALAD ? '#ffffff' : '#000000'
+                       }}
+                       >Salad</button>
+
+                       <button
+                       type='button'
+                       className='btn-main'
+                       onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}
+                       style={{backgroundColor: productSearch.productCollection === ProductCollection.DESSERT ? '#000000' : '#f7f0f09a',
+                        color: productSearch.productCollection === ProductCollection.DESSERT ? '#ffffff' : '#000000'
+                       }}
                        >Dessert</button>
 
                        <button
                        type='button'
                        className='btn-main'
+                       onClick={() => searchCollectionHandler(ProductCollection.DRINK)}
+                       style={{backgroundColor: productSearch.productCollection === ProductCollection.DRINK ? '#000000' : '#f7f0f09a',
+                        color: productSearch.productCollection === ProductCollection.DRINK ? '#ffffff' : '#000000'
+                       }}
                        >Drink</button>
  
                        </div>
