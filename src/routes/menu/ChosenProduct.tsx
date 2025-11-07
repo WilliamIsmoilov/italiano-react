@@ -13,12 +13,15 @@ import { useSelector} from 'react-redux';
 import { serverApi } from '../../libs/config';
 import { setChosenProduct, setRestaurant } from "./slice";
 import type { Product } from "../../libs/types/product";
+import { useParams } from "react-router-dom";
+import ProductService from "../../services/ProductService";
+import MemberService from "../../services/MemberService";
 
 
 
 const actionDispatch = (dispatch: Dispatch) => ({
-  setChosenProduct: (data: Product[]) => dispatch(setChosenProduct(data)),
-  setRestaurant: (data: Member[]) => dispatch(setRestaurant(data))
+  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
+  setRestaurant: (data: Member) => dispatch(setRestaurant(data))
 })
 
 const chosenProductRetriever = createSelector(
@@ -30,11 +33,23 @@ const restaurantRetriever = createSelector(
 
 
 
-const list = [
-  {productName: 'Bruciola', imagePath: '/images/orderpasta1.png', productDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas consequat mi eget auctor aliquam, diam. '},
-]
-
 export default function ChosenProduct(){
+ const {productId} = useParams<{productId: string}>();
+ const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
+ const {chosenProduct} = useSelector(chosenProductRetriever)
+ const {restaurant} = useSelector(restaurantRetriever)
+
+ useEffect(() => {
+  const product = new ProductService();
+  product.getProduct(productId!)
+  .then(data => setChosenProduct(data))
+  .catch(err => console.log(err))
+
+  const member  = new MemberService()
+  member.getRestaurant()
+  .then(data => setRestaurant(data))
+  .catch(err => console.log(err))
+ },[])
   return (
     <div className="chosen-product">
       <Box className='title'>Product Detail</Box>
@@ -45,10 +60,11 @@ export default function ChosenProduct(){
             navigation={true}        
             className="swiper-area"
           >
-            {list.map((ele) => {
+            {chosenProduct?.productImages.map((ele: string, index: number) => {
+              const imagePath = `${serverApi}/${ele}`;
               return(
-                <SwiperSlide>
-                  <img src={ele.imagePath} className="slider-image" style={{width:'95%', height:'95%'}} />
+                <SwiperSlide key={index}>
+                  <img src={imagePath} className="slider-image" style={{width:'95%', height:'95%'}} />
                 </SwiperSlide>
               )
             })
@@ -58,16 +74,16 @@ export default function ChosenProduct(){
         </Stack>
         <Stack className='chosen-product-info'>
           <Box className='info-box'>
-            <strong className="product-name">Braciola</strong>
-            <strong className="resto-name">Italiano</strong>
-            <strong className="resto-name">+82 10 3913 4666</strong>
+            <strong className="product-name">{chosenProduct?.productName}</strong>
+            <strong className="resto-name">{restaurant?.memberNick}</strong>
+            <strong className="resto-name">{restaurant?.memberPhone}</strong>
             <Box className='rating-box'>
               <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
             </Box>
-            <p  className="product-desc"> edwgbucyhvvvvvvvvvvebfcuebcsvcuwercvbewvcewucviewbv</p>
+            <p  className="product-desc">{chosenProduct?.productDesc ? chosenProduct.productDesc : 'No description'}</p>
             <div className="product-price">
               <span>Price:</span>
-              <span>$ 2900</span>
+              <span>$ {chosenProduct?.productPrice}</span>
             </div>
             <div className="button-box">
               <Button >

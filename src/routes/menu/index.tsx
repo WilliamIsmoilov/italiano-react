@@ -7,7 +7,7 @@ export default function MenuPage(){
     return( <div className="menupage">
         <Routes>
             <Route path="" element={<MealsPage/>}/>
-            <Route path=":id" element={<ChosenProduct/>}/>
+            <Route path="/:productId" element={<ChosenProduct/>}/>
         </Routes>
     </div>
 
