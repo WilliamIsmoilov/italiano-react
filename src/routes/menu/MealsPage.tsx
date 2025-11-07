@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {   IconButton, Input,  } from "@mui/material";;
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -19,6 +19,7 @@ import { setGetProducts } from './slice';
 import type { Product, ProductInquery } from "../../libs/types/product";
 import { useEffect } from 'react';
 import {useDispatch} from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { createSelector, type Dispatch } from '@reduxjs/toolkit';
 import { retrieveGetProducts } from "./selector";
 import { useSelector} from 'react-redux';
@@ -39,6 +40,11 @@ const getProductsRetriever = createSelector(
 
 
 export default  function MealsPage(){
+const [open, setOpen] = useState(false);
+const [searchText, setSearchText] = useState<string>("");
+const navigate = useNavigate()
+
+
 const {setGetProducts} = actionDispatch(useDispatch()) 
 const [productSearch, setProductSearch] = useState<ProductInquery>({
   page: 1,
@@ -67,13 +73,30 @@ const searchCollectionHandler = (collection: ProductCollection) => {
 }
 
 
-//////////////////////////////////////
-    const [open, setOpen] = useState(false);
-  const [searchText, setSearchText] = useState("");
-
-  const searchProductHandler = () => {
-    console.log("Searching:", searchText);
+const searchProductHandler = () => {
+   productSearch.search = searchText;
+   setProductSearch({...productSearch});
   };
+
+  const clearSearch = () => {
+    setOpen(false)
+    productSearch.search = '';
+    setSearchText('')
+    setProductSearch({...productSearch})
+  }
+
+  const paginationHandler = (e: ChangeEvent<unknown>, value: number) => {
+    productSearch.page = value;
+    setProductSearch({...productSearch})
+  }
+
+  const chosenDishHandler = (id: string) => {
+    navigate(`/menu/${id}`)
+  }
+
+
+//////////////////////////////////////
+
 
     return(<div className="meal-frame">
         <Container>
@@ -101,7 +124,7 @@ const searchCollectionHandler = (collection: ProductCollection) => {
                         placeholder="Type here"
                         disableUnderline
                         value={searchText}
-                         onChange={(e) => setSearchText(e.target.value)}
+                        onChange={(e) =>  setSearchText(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && searchProductHandler()}
                         sx={{
                         border: "1px solid #ff8a00",
@@ -127,7 +150,8 @@ const searchCollectionHandler = (collection: ProductCollection) => {
               Search
             </Button>
             <IconButton
-            onClick={() => setOpen(false)}
+            onClick={() => clearSearch()}
+            
             sx={{color:"black", ml:1}}
             >
                 <CloseIcon/>
@@ -189,8 +213,9 @@ const searchCollectionHandler = (collection: ProductCollection) => {
               getProducts.map((ele: Product) => {
                 const imagePath = `${serverApi}/${ele.productImages[0]}`
               return (
-                <CssVarsProvider key={ele._id} >
+                <CssVarsProvider key={ele._id}>
                   <Card 
+                  onClick={() => chosenDishHandler(ele._id)}
                      sx={{ 
                     width: 270,
                     height:500, 
@@ -286,7 +311,14 @@ const searchCollectionHandler = (collection: ProductCollection) => {
            
           </Stack>  
           <Stack className='pagination-section'>
-                       <Pagination  count={4} variant="outlined" shape="rounded" />
+                       <Pagination 
+                        count={getProducts.length !== 0 ? productSearch.page +1 : productSearch.page}
+                        page={productSearch.page} 
+                        
+                        shape="rounded" 
+                        onChange={paginationHandler}
+                        />
+                        
                     </Stack>      
 
             </Stack>
