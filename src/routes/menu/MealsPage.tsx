@@ -54,7 +54,7 @@ const [productSearch, setProductSearch] = useState<ProductInquery>({
   page: 1,
   limit: 6,
   order: 'createdAt',
-  productCollection: ProductCollection.LUNCH,
+  productCollection: ProductCollection.DINNER,
   search: ''
 
 })

@@ -113,15 +113,16 @@ export default function Basket(props: BasketProps){
                                     return( 
                                     <Box className={'basket-info-box'} key={item._id}>
                                         <div className="cancel-btn">
-                                            <BackspaceIcon style={{color: 'red'}} />
+                                            <BackspaceIcon style={{color: 'red', marginLeft:'5px'}} />
                                         </div>
                                         <img src={imagePath} alt="orders" className="product-img"/>
                                         <span className="product-name">{item.name}</span>
                                         <p className={"product-price"}> <img src="/icons/money.svg" style={{width: '30px', height:"30px"}}/> {item.price}</p>
                                         <Box sx={{minWidth: 120}}>
                                             <div className="col-2">
-                                                <button className="remove" type='button' > <img src="/icons/minus.svg" alt="plus" style={{width: '25px', height:"25px"}}/></button>
-                                                <button className="add"> <img src="/icons/plus.svg" alt="plus" style={{width: '25px', height:"25px"}} /></button>
+                                                <button className="remove" type='button' > <img src="/icons/minus.svg" alt="plus" style={{width: '20px', height:"20px"}}/></button>
+                                                <button style={{border: '0px', backgroundColor:'white', color: '#ff8a00', fontWeight: '600', fontSize:'15px'}}>{item.quantity}</button>
+                                                <button className="add"> <img src="/icons/plus.svg" alt="plus" style={{width: '20px', height:"20px"}} /></button>
                                             </div>
                                         </Box>
                                     </Box>    

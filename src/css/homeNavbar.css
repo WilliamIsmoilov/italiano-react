@@ -190,8 +190,8 @@
 }
 
 .basket-info-box .product-name {
-  margin-left: 11px;
-  width: 185px;
+  margin-left: 9px;
+  width: 175px;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
@@ -201,7 +201,7 @@
 }
 
 .basket-info-box .product-price {
-  width: 80px;
+  width: 75px;
   font-family: 'Poppins' sans-serif;
   font-style: bold;
   font-weight: 600;
@@ -211,12 +211,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-left: -10px;
 }
 
 .basket-frame .cancel-btn {
   position: absolute;
   top: 33%;
-  right: 2%;
+  right: 1%;
   cursor: pointer;
   border-radius: 50%;
 }

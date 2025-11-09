@@ -37,7 +37,7 @@ const location = useLocation();
                   <div className="circle-wrapper">
                    <Box
                    component={'img'}
-                   src="/images/reservation.jpg"
+                   src="/images/table.jpg"
                     sx={{
                         width:'525px',
                         height:'525px',
