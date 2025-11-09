@@ -163,6 +163,7 @@
   height: 35px;
   display: flex;
   flex-direction: row;
+  font-weight: 600;
   align-items: center;
   background: #ff8800ff;
   border-width: 1px 0px;

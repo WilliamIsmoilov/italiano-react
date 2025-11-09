@@ -26,6 +26,7 @@ import { useSelector} from 'react-redux';
 import { serverApi } from '../../libs/config';
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../libs/enum/product.enum";
+import type { CartItem } from "../../libs/types/search";
 
 
 
@@ -37,9 +38,12 @@ const getProductsRetriever = createSelector(
   retrieveGetProducts, (getProducts) => ({getProducts})
 )
 
+interface ProductsProps{
+    onAdd: (item :CartItem) => void
+}
 
-
-export default  function MealsPage(){
+export default  function MealsPage(props: ProductsProps){
+  const {onAdd} = props;
 const [open, setOpen] = useState(false);
 const [searchText, setSearchText] = useState<string>("");
 const navigate = useNavigate()
@@ -98,7 +102,8 @@ const searchProductHandler = () => {
 //////////////////////////////////////
 
 
-    return(<div className="meal-frame">
+    return(
+    <div className="meal-frame">
         <Container>
             <Stack className="meal-section">
                     <Stack className="meal-front-section" flexDirection={'row'}>
@@ -280,13 +285,25 @@ const searchProductHandler = () => {
             fontSize:'25px'
             }}>$ {ele.productPrice}</Typography>
         <Button
+        onClick={(e) => {
+          e.stopPropagation()
+          console.log('button pressed')
+          onAdd({
+            _id: ele._id,
+            quantity: 1,
+            name: ele.productName,
+            price: ele.productPrice,
+            image: ele.productImages[0]
+          });
+          e.stopPropagation()
+        }}
         className="order-btn"
           size="md"
           color="primary"
           aria-label="Explore Bahamas Islands"
           sx={{ ml: 'auto', alignSelf: 'center', fontWeight: 600,  width:'157px', height:'55px', borderRadius:'50px', backgroundColor:'#FF8A00'}}
         >
-          Order now
+          Add Busket
         </Button>
         <Button
                 className="hover-icon-btn"

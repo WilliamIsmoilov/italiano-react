@@ -4,10 +4,16 @@ import { GiFullPizza } from "react-icons/gi";
 import "../../css/homeNavbar.css";
 import { Box, Button, Container, Stack } from '@mui/material';
 import Basket from "./Basket";
+import type { CartItem } from "../../libs/types/search";
+
+interface NavbarProps{
+    cartItems: CartItem[];
+}
 
 
 
-export default function HomeNavbar() {
+export default function HomeNavbar(props: NavbarProps) {
+    const {cartItems} = props
    
 
     const base = `
@@ -56,7 +62,7 @@ export default function HomeNavbar() {
                     </Box>
 
                     {/* Basket */}
-                    <Basket/>
+                    <Basket cartItems={cartItems} />
 
                     {!authMember? (<Box>
                     <Button 

@@ -16,6 +16,7 @@ import type { Product } from "../../libs/types/product";
 import { useParams } from "react-router-dom";
 import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
+import type { CartItem } from "../../libs/types/search";
 
 
 
@@ -31,9 +32,13 @@ const restaurantRetriever = createSelector(
   retrieveRestaurant, (restaurant) => ({restaurant})
 )
 
+interface ProductsProps{
+    onAdd: (item :CartItem) => void
+}
 
 
-export default function ChosenProduct(){
+export default function ChosenProduct(props: ProductsProps){
+  const {onAdd} = props
  const {productId} = useParams<{productId: string}>();
  const {setRestaurant, setChosenProduct} = actionDispatch(useDispatch());
  const {chosenProduct} = useSelector(chosenProductRetriever)
