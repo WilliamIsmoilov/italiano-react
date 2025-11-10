@@ -25,7 +25,7 @@ import { type Dispatch } from '@reduxjs/toolkit';
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../libs/enum/product.enum";
 import { setAllProducts } from './slice';
-import { data } from 'react-router';
+import type { CartItem } from '../../libs/types/search';
 
 const actionDispatch = (dispatch: Dispatch) => ({
     setAllProducts: (data: Product[]) => dispatch(setAllProducts(data))
@@ -36,8 +36,13 @@ const allProductsRetriever = createSelector(
     retrieveAllProducts, (allProducts) => ({allProducts})
 )
 
+interface OrderOnlineProps{
+    onAdd: (item: CartItem) => void
+    cartItems: CartItem[];
+}
 
-export default function OrderOnline() {
+export default function OrderOnline(props: OrderOnlineProps) {
+    const {onAdd, cartItems} = props;
     const {setAllProducts} = actionDispatch(useDispatch())
     const [productSearch, setProductSearch] = useState<ProductInquery>({
         page: 1,
@@ -61,6 +66,11 @@ export default function OrderOnline() {
  const searchCollectionHandler = (collection: ProductCollection)  => {
     productSearch.page =1;
     productSearch.productCollection = collection;
+    setProductSearch({...productSearch})
+ }
+
+ const paginationHandler = (e: React.ChangeEvent<unknown>, value: number) => {
+    productSearch.page = value;
     setProductSearch({...productSearch})
  }
 
@@ -153,6 +163,16 @@ export default function OrderOnline() {
                                                    size="md"
                                                    color="primary"
                                                    aria-label="Explore Bahamas Islands"
+                                                   onClick={(e) => {
+                                                    onAdd({
+                                                        _id: ele._id,
+                                                        quantity: 1,
+                                                        name: ele.productName,
+                                                        price: ele.productPrice,
+                                                        image: ele.productImages[0]
+
+                                                    })
+                                                   }}
                                                     >
                                                         Order now 
                                                       </Button>
@@ -171,9 +191,14 @@ export default function OrderOnline() {
                         </Box>
                         )}  
                         <Stack className='pagination-section'>
-                            <Pagination count={4} variant="outlined" shape="rounded" />
+                            <Pagination 
+                            count={allProducts.length !== 0 ? productSearch.page + 1 : productSearch.page}
+                            page={productSearch.page}
+                            shape="rounded" 
+                            onChange={paginationHandler}/>
                         </Stack>
                     </Stack>
+                    
 
 
 
@@ -184,9 +209,11 @@ export default function OrderOnline() {
                             Order list
                         </button>
                         <Stack className='order-product'>
-                            <Stack sx={{height:'650px'}}>
+                            {cartItems.map((item: CartItem) => {
+                                return(
+                                    <Stack sx={{height:'685px'}}>
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between'}}>
-                                <Typography className='order-title'> Spagetti</Typography>
+                                <Typography className='order-title'>{item.name}</Typography>
                             <div className='cancel-btn'>
                                 <DeleteOutlineIcon sx={{color:"red"}}/>
                             </div>
@@ -194,14 +221,17 @@ export default function OrderOnline() {
                             
                             <Box flexDirection={'row'}  sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px'}}>
                                 <div className='cal-1'>
-                                    <button type='button' className='btn-cal' style={{color:'red'}}><RemoveOutlinedIcon/></button> { '2'}
+                                    <button type='button' className='btn-cal' style={{color:'red'}}><RemoveOutlinedIcon/></button> { item.quantity}
                                     <button type='button' className='btn-cal'  style={{color:'green'}}><AddOutlinedIcon/></button>
                                 </div>
                                 <Typography className='order-price2'>
-                                    $24.1
+                                    $ {item.price}
                                 </Typography>
                             </Box>
                             </Stack>
+                                )
+                            })}
+                            
                         </Stack>
 
                         <Stack className='calculate-product'>

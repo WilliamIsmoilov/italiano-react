@@ -11,6 +11,7 @@ import type { Dispatch } from '@reduxjs/toolkit';
 import { setPopularMenu } from './slice';
 import type { Product } from '../../libs/types/product';
 import ProductService from '../../services/ProductService';
+import type { CartItem } from '../../libs/types/search';
 
 
 /** REDUX SLICE & SELECTOR **/
@@ -18,8 +19,12 @@ const actionDispatch = (dispatch: Dispatch) => ({
     setPopularMenu: (data: Product[]) => dispatch(setPopularMenu(data))
 })
 
+interface PopularMenuProps{
+    onAdd: (item: CartItem) => void
+}
 
-const HomePage = () => {
+const HomePage = ( props: PopularMenuProps) => {
+    const {onAdd} = props
     //Select: Store => DATA
     const {setPopularMenu} = actionDispatch(useDispatch())
 
@@ -39,7 +44,7 @@ const HomePage = () => {
     return <div className="homepage">
         <BrandPage/>
         <BrandPages/>
-        <PopularMenu/>
+        <PopularMenu onAdd={onAdd} />
         <OpenDays/>
     </div>
     

@@ -243,15 +243,20 @@
 
 .order .order-frame .order-product {
   margin-top: 30px;
-  width: 200px;
+  width: 350px;
+  max-height: 685px;
+  overflow-y: auto;
   flex-direction: column;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  scrollbar-gutter: stable;
+  box-sizing: border-box;
+  gap: 25px;
 }
 
 .order .order-frame .order-product .order-title {
-  width: 125px;
+  width: auto;
   height: 50px;
   angle: 0 deg;
   opacity: 1;
@@ -284,7 +289,7 @@
   font-family: Poppins, sans-serif;
   font-weight: 500;
   font-style: medium;
-  font-size: 25px;
+  font-size: 20px;
   leading-trim: NONE;
   line-height: 200%;
   letter-spacing: 0%;
@@ -319,6 +324,7 @@
   display: flex;
   align-items: center;
   gap: 40px;
+  margin-top: 50px;
 }
 
 .order .order-frame .order-section .products-section .calculate-product {

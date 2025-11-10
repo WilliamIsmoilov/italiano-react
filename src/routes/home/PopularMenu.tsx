@@ -10,6 +10,7 @@ import { CssVarsProvider } from '@mui/joy/styles';
 import { Box,  Stack  } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useNavigate } from "react-router-dom";
 
 
 import { useDispatch, useSelector} from 'react-redux';
@@ -23,6 +24,7 @@ import { useState } from 'react';
 import { ProductCollection } from '../../libs/enum/product.enum';
 import ProductService from '../../services/ProductService';
 import { useEffect } from 'react';
+import type { CartItem } from '../../libs/types/search';
 
 
 
@@ -33,8 +35,14 @@ const popularMenuRetriever = createSelector(
         setPopularMenu: (data: Product[]) => dispatch(setPopularMenu(data))
     })
 
+    interface PopularMenuProps{
+        onAdd: (item :CartItem) => void
+    }
 
-export default function Popularmenu() {
+
+export default function Popularmenu(props: PopularMenuProps) {
+  const navigate = useNavigate();
+  const {onAdd} = props;
   const {setPopularMenu} = actionDispatch(useDispatch())
   const [productSearch, setProductSearch] = useState<ProductInquery>({
       page: 1,
@@ -63,6 +71,18 @@ export default function Popularmenu() {
       productSearch.productCollection = collection;
       setProductSearch({...productSearch})
     }
+
+    const paginationHandler = (e: React.ChangeEvent<unknown>, value: number) => {
+        productSearch.page = value;
+        setProductSearch({...productSearch})
+      }
+
+      const navigateOrder = () => {
+        navigate('/orderOnline')
+      }
+
+
+    //////////////////////////////////////////////////
   
     return ( <div className="popular-dishes-frame">
 
@@ -128,6 +148,16 @@ export default function Popularmenu() {
           size="md"
           color="primary"
           aria-label="Explore Bahamas Islands"
+          onClick={(e) => {
+            onAdd({
+              _id: ele._id,
+              quantity: 1,
+              name: ele.productName,
+              price: ele.productPrice,
+              image: ele.productImages[0]
+            })
+            navigateOrder();
+          }}
         >
           Order now<ShoppingCartIcon/>
         </Button>
@@ -145,7 +175,11 @@ export default function Popularmenu() {
            
           </Stack>
           <Stack className='pagination-section'>
-             <Pagination count={4} variant="outlined" shape="rounded" />
+             <Pagination 
+                count={popularMenu.length !== 0 ? productSearch.page +1 : productSearch.page}
+                page={productSearch.page}         
+                shape="rounded" 
+                onChange={paginationHandler} />
           </Stack>
         </Stack>
       </Container>

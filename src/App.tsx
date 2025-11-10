@@ -19,10 +19,10 @@ function App() {
     <>
     <HomeNavbar cartItems={cartItems}/>
     <Routes>
-    <Route path="/" element={<HomePage />} />
+    <Route path="/" element={<HomePage onAdd={onAdd}/>} />
         <Route path="/menu/*" element={<MenuPage onAdd={onAdd}/>} />
         <Route path="/aboutUs" element={<AboutPage />} />
-        <Route path="/orderOnline" element={<OrderOnlinePage />} />
+        <Route path="/orderOnline" element={<OrderOnlinePage onAdd={onAdd} cartItems={cartItems}/>} />
         <Route path="/reservation/*" element={<ReservationPage />} />
         <Route path="/contactUs" element={<ContactUsPage />} />
      </Routes>
