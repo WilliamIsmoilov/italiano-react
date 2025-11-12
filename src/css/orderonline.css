@@ -330,6 +330,7 @@
 .order .order-frame .order-section .products-section .calculate-product {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .order
@@ -345,4 +346,16 @@
   leading-trim: NONE;
   line-height: 100%;
   letter-spacing: 0%;
+}
+
+.order
+  .order-frame
+  .order-section
+  .products-section
+  .calculate-product
+  .order-btn {
+  margin-top: 60px;
+  border-radius: 25px;
+  background: green;
+  height: 50px;
 }

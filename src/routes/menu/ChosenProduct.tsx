@@ -33,7 +33,7 @@ const restaurantRetriever = createSelector(
 )
 
 interface ProductsProps{
-    onAdd: (item :CartItem) => void
+    onAdd: (item :CartItem) => void;
 }
 
 
@@ -91,7 +91,13 @@ export default function ChosenProduct(props: ProductsProps){
               <span>$ {chosenProduct?.productPrice}</span>
             </div>
             <div className="button-box">
-              <Button >
+              <Button onClick={(e) => onAdd({
+            _id: chosenProduct._id,
+            quantity: 1,
+            name: chosenProduct.productName,
+            price: chosenProduct.productPrice,
+            image: chosenProduct.productImages[0]
+          })}>
                 Add To Basket
               </Button>
             </div>

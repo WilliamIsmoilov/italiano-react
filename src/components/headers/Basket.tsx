@@ -22,6 +22,10 @@ export default function Basket(props: BasketProps){
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const itemsPrice = cartItems.reduce( (a: number, c: CartItem) => a + c.quantity*c.price, 
+    0);
+    const shippingCost: number = itemsPrice < 100 ? 5 : 0;
+    const totalPrice = (itemsPrice + shippingCost).toFixed()
 /////////////////// handlers ////////////////////////////////
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(e.currentTarget)
@@ -126,7 +130,7 @@ export default function Basket(props: BasketProps){
                                         </div>
                                         <img src={imagePath} alt="orders" className="product-img"/>
                                         <span className="product-name">{item.name}</span>
-                                        <p className={"product-price"}> <img src="/icons/money.svg" style={{width: '30px', height:"30px"}}/> {item.price}</p>
+                                        <p className={"product-price"}> <img src="/icons/money.svg" style={{width: '30px', height:"30px"}}/> {item.price * item.quantity}</p>
                                         <Box sx={{minWidth: 120}}>
                                             <div className="col-2">
                                                 <button className="remove" type='button' onClick={() => onRemove(item)} > <img src="/icons/minus.svg" alt="plus" style={{width: '20px', height:"20px"}}/></button>
@@ -141,7 +145,7 @@ export default function Basket(props: BasketProps){
                         </Box>
                     </Box>
                     {cartItems.length !== 0 ? (<Box className={"basket-order"}>
-                    <span className={"price"}>Total: $ 75    ( 70 + 5 )</span>
+                    <span className={"price"}>Total: $ {totalPrice}    ( {itemsPrice} + {shippingCost} )</span>
                     <Button 
                     className="order-btn"
                       >

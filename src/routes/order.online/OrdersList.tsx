@@ -46,7 +46,11 @@ interface OrderOnlineProps{
 
 export default function OrderOnline(props: OrderOnlineProps) {
     const {onAdd, cartItems, onRemove, onDelete, deleteAll} = props;
-    const {setAllProducts} = actionDispatch(useDispatch())
+    const {setAllProducts} = actionDispatch(useDispatch());
+    const itemsPrice = cartItems.reduce((a: number, c: CartItem) => a + c.quantity*c.price, 
+    0);
+    const shippingCost: number = itemsPrice < 100 ? 5 : 0;
+    const totalPrice = (itemsPrice + shippingCost).toFixed()
     const [productSearch, setProductSearch] = useState<ProductInquery>({
         page: 1,
         limit: 9,
@@ -243,27 +247,34 @@ export default function OrderOnline(props: OrderOnlineProps) {
                             
                             
                         </Stack>
-
-                        <Stack className='calculate-product'>
+                        
+                        {cartItems.length !== 0 ? (
+                            <Stack className='calculate-product'>
                             <Box className='calculate-section'>
                                 <CalculateOutlinedIcon sx={{color:'#ff8a00', height:'40px', width:'40px'}}/> Calculator
                             </Box>
 
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px', marginTop:'30px'}}>
                                 <Typography className='fee-section'> Subtotal</Typography>
-                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>  ${}</Typography>
+                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>  ${itemsPrice}</Typography>
                             </Box>
 
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px', marginTop:'30px'}}>
                                 <Typography className='fee-section'> Delivery fee</Typography>
-                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>  $5.0</Typography>
+                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>  ${shippingCost}</Typography>
                             </Box>
 
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px', marginTop:'30px'}}>
                                 <Typography className='fee-section'> Total</Typography>
-                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>$80.6</Typography>
+                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>${totalPrice}</Typography>
                             </Box>
+                            <Button className='order-btn'>
+                                Order
+                            </Button>
                         </Stack>
+                            ): (
+                                ''
+                            )}
 
                     </Stack>
 
