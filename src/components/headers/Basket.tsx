@@ -11,10 +11,14 @@ import { serverApi } from "../../libs/config";
 
 interface BasketProps{
     cartItems: CartItem[];
+    onAdd: (item: CartItem) => void;
+    onRemove: (item: CartItem) => void;
+    onDelete: (item: CartItem) => void;
+    deleteAll: () => void;
 }
 
 export default function Basket(props: BasketProps){
-    const {cartItems} = props;
+    const {cartItems, onAdd, onDelete, onRemove, deleteAll} = props;
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -26,6 +30,7 @@ export default function Basket(props: BasketProps){
     const handleClose = () => {
         setAnchorEl(null)        
     }
+    /////////////////////////////////
     return(
         <Box className = {'hover-line'} >
             <IconButton
@@ -101,7 +106,8 @@ export default function Basket(props: BasketProps){
                           <div>Cart Products:</div>
                           <DeleteIcon
                                     sx={{ ml: '5px' }}
-                                    style={{ cursor: 'pointer', color: 'green' }} /></>
+                                    style={{ cursor: 'pointer', color: 'green' }} 
+                                    onClick ={() => deleteAll()}/></>
                             }
                             </Stack>
                     </Box>
@@ -113,16 +119,19 @@ export default function Basket(props: BasketProps){
                                     return( 
                                     <Box className={'basket-info-box'} key={item._id}>
                                         <div className="cancel-btn">
-                                            <BackspaceIcon style={{color: 'red', marginLeft:'5px'}} />
+                                            <BackspaceIcon 
+                                                      onClick={() => onDelete(item)} 
+                                                      
+                                                     style={{color: 'red', marginLeft:'5px'}} />
                                         </div>
                                         <img src={imagePath} alt="orders" className="product-img"/>
                                         <span className="product-name">{item.name}</span>
                                         <p className={"product-price"}> <img src="/icons/money.svg" style={{width: '30px', height:"30px"}}/> {item.price}</p>
                                         <Box sx={{minWidth: 120}}>
                                             <div className="col-2">
-                                                <button className="remove" type='button' > <img src="/icons/minus.svg" alt="plus" style={{width: '20px', height:"20px"}}/></button>
+                                                <button className="remove" type='button' onClick={() => onRemove(item)} > <img src="/icons/minus.svg" alt="plus" style={{width: '20px', height:"20px"}}/></button>
                                                 <button style={{border: '0px', backgroundColor:'white', color: '#ff8a00', fontWeight: '600', fontSize:'15px'}}>{item.quantity}</button>
-                                                <button className="add"> <img src="/icons/plus.svg" alt="plus" style={{width: '20px', height:"20px"}} /></button>
+                                                <button className="add" type="button" onClick={() => onAdd(item)}> <img src="/icons/plus.svg" alt="plus" style={{width: '20px', height:"20px"}} /></button>
                                             </div>
                                         </Box>
                                     </Box>    

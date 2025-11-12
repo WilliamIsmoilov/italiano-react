@@ -39,10 +39,13 @@ const allProductsRetriever = createSelector(
 interface OrderOnlineProps{
     onAdd: (item: CartItem) => void
     cartItems: CartItem[];
+    onRemove: (item: CartItem) => void;
+    onDelete: (item: CartItem) => void;
+    deleteAll: () => void;
 }
 
 export default function OrderOnline(props: OrderOnlineProps) {
-    const {onAdd, cartItems} = props;
+    const {onAdd, cartItems, onRemove, onDelete, deleteAll} = props;
     const {setAllProducts} = actionDispatch(useDispatch())
     const [productSearch, setProductSearch] = useState<ProductInquery>({
         page: 1,
@@ -209,28 +212,35 @@ export default function OrderOnline(props: OrderOnlineProps) {
                             Order list
                         </button>
                         <Stack className='order-product'>
-                            {cartItems.map((item: CartItem) => {
+                            {cartItems.length !== 0 ? (
+                                cartItems.map((item: CartItem) => {
                                 return(
                                     <Stack sx={{height:'685px'}}>
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between'}}>
                                 <Typography className='order-title'>{item.name}</Typography>
                             <div className='cancel-btn'>
-                                <DeleteOutlineIcon sx={{color:"red"}}/>
+                                <DeleteOutlineIcon sx={{color:"red"}} onClick={() => onDelete(item)}/>
                             </div>
                             </Box>
                             
                             <Box flexDirection={'row'}  sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px'}}>
                                 <div className='cal-1'>
-                                    <button type='button' className='btn-cal' style={{color:'red'}}><RemoveOutlinedIcon/></button> { item.quantity}
-                                    <button type='button' className='btn-cal'  style={{color:'green'}}><AddOutlinedIcon/></button>
+                                    <button type='button' onClick={() => onRemove(item)} className='btn-cal' style={{color:'red'}}><RemoveOutlinedIcon/></button> { item.quantity}
+                                    <button type='button' onClick={() => onAdd(item)} className='btn-cal'  style={{color:'green'}}><AddOutlinedIcon/></button>
                                 </div>
                                 <Typography className='order-price2'>
-                                    $ {item.price}
+                                    $ {item.price * item.quantity}
                                 </Typography>
                             </Box>
                             </Stack>
                                 )
-                            })}
+                            })
+                            ): (
+                                <Box>
+                                    <h2>Not chosed yet</h2>
+                                </Box>
+                            )}
+                            
                             
                         </Stack>
 
@@ -241,7 +251,7 @@ export default function OrderOnline(props: OrderOnlineProps) {
 
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px', marginTop:'30px'}}>
                                 <Typography className='fee-section'> Subtotal</Typography>
-                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>  $75.6</Typography>
+                                 <Typography className='fee-section' sx={{color:'#ff8a00'}}>  ${}</Typography>
                             </Box>
 
                             <Box flexDirection={'row'} sx={{display:'flex', alignItems: 'center', justifyContent:'space-between', gap:'30px', marginTop:'30px'}}>

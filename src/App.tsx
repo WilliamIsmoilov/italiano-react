@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
  import { Route, Routes } from "react-router"
 import HomePage from "./routes/home"
 import MenuPage from "./routes/menu"
@@ -14,15 +15,24 @@ import useBasket from "./hooks/useBasket"
 
 
 function App() {
-  const {cartItems, onAdd} = useBasket()
+  const {cartItems, onAdd, onRemove, onDelete, deleteAll} = useBasket()
   return (
     <>
-    <HomeNavbar cartItems={cartItems}/>
+    <HomeNavbar cartItems={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove} 
+                onDelete={onDelete} 
+                deleteAll={deleteAll}/>
     <Routes>
     <Route path="/" element={<HomePage onAdd={onAdd}/>} />
         <Route path="/menu/*" element={<MenuPage onAdd={onAdd}/>} />
         <Route path="/aboutUs" element={<AboutPage />} />
-        <Route path="/orderOnline" element={<OrderOnlinePage onAdd={onAdd} cartItems={cartItems}/>} />
+        <Route path="/orderOnline" element={<OrderOnlinePage 
+                                            onAdd={onAdd} 
+                                            cartItems={cartItems}
+                                            onRemove={onRemove}
+                                            onDelete={onDelete}
+                                            deleteAll={deleteAll} />} />
         <Route path="/reservation/*" element={<ReservationPage />} />
         <Route path="/contactUs" element={<ContactUsPage />} />
      </Routes>

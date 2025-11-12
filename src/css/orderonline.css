@@ -282,7 +282,7 @@
 }
 
 .order .order-frame .order-product .order-price2 {
-  width: 62px;
+  width: 100%;
   height: 50px;
   angle: 0 deg;
   opacity: 1;
