@@ -25,7 +25,6 @@ export interface LoginInput{
 }
 
 export interface MemberInput{
-    _id: string;
     memberType?: MemberType;
     memberStatus?: MemberStatus;
     memberReservation?: string,

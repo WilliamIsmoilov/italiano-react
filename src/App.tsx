@@ -12,17 +12,58 @@ import "./css/homeNavbar.css"
 import './css/footer.css'
 import Footer from "./components/footer"
 import useBasket from "./hooks/useBasket"
+import React, { useState } from "react"
+import MemberService from "./services/MemberService"
+import { useGlobals } from "./hooks/useGlobal"
+import { sweetErrorHandling } from "./libs/sweetAlert"
+import { Message } from "./libs/config"
+import AuthenticationModal from "./components/auth"
 
 
 function App() {
-  const {cartItems, onAdd, onRemove, onDelete, deleteAll} = useBasket()
+  const {cartItems, onAdd, onRemove, onDelete, deleteAll} = useBasket();
+  const {setAuthMember} = useGlobals()
+  const [signupOpen, setSignupOpen] = useState<boolean>(false);
+  const [loginOpen, setLoginOpen] =useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  
+  ////////// handlers ///////
+  const handleSignupClose = () => setSignupOpen(false);
+  const handleLoginClose = () => setLoginOpen(false);
+
+  const handleLogoutClick = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(e.currentTarget);
+  }
+
+  const handleLogoutClose = () => setAnchorEl(null);
+  const handleLogoutRequest = async () => {
+    try {
+      const confirmed = confirm('Are you sure to logout?')
+      if(!confirmed) return;
+      const member = new MemberService();
+      await member.logout();
+      setAuthMember(null)
+      confirm('Are you sure to logout?')
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(Message.error1)
+    }
+  }
+
+
   return (
     <>
     <HomeNavbar cartItems={cartItems}
                 onAdd={onAdd}
                 onRemove={onRemove} 
                 onDelete={onDelete} 
-                deleteAll={deleteAll}/>
+                deleteAll={deleteAll}
+                setSignupOpen={setSignupOpen}
+                setLoginOpen={setLoginOpen}
+                anchorEl={anchorEl}
+                handleLogoutClick={handleLogoutClick}
+                handleLogoutClose={handleLogoutClose}
+                handleLogoutRequest={handleLogoutRequest}/>
     <Routes>
     <Route path="/" element={<HomePage onAdd={onAdd}/>} />
         <Route path="/menu/*" element={<MenuPage onAdd={onAdd}/>} />
@@ -37,6 +78,12 @@ function App() {
         <Route path="/contactUs" element={<ContactUsPage />} />
      </Routes>
      <Footer/>
+     <AuthenticationModal
+           signupOpen={signupOpen}
+           loginOpen={loginOpen}
+           handleLoginClose={handleLoginClose}
+           handleSignupClose={handleSignupClose}
+           />
     </>
   )
 }

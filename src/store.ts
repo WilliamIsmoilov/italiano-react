@@ -4,6 +4,7 @@ import HomePageReducer from './routes/home/slice';
 import reduxLogger from 'redux-logger';
 import OrderOnlineReducer from './routes/order.online/slice';
 import MenuPageReducer from './routes/menu/slice';
+import ReservationPageReducer from './routes/reservation/slice';
 
 export const store = configureStore({
     // @ts-expect-error
@@ -11,7 +12,8 @@ export const store = configureStore({
     reducer: {
         homePage: HomePageReducer,
         orderOnline: OrderOnlineReducer,
-        menuPage: MenuPageReducer
+        menuPage: MenuPageReducer,
+        reservationPage: ReservationPageReducer
     },
 });
 export type AppDispatch = typeof store.dispatch;

@@ -1,0 +1,121 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .box-1 {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  width: 900px;
+  height: 600px;
+  border-radius: 10px;
+  background-color: #fafafaff;
+  border: 0px solid #000;
+}
+.box-1 .img-box {
+  width: 55%;
+  height: 100%;
+}
+
+.box-1 .img-box div {
+  height: 100%;
+}
+
+.login .box-1 .login-section {
+  width: 45%;
+  height: 100%;
+  display: flex;
+}
+
+.box-1 .img-box .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.login .box-1 .login-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.login .box-1 .login-section .login-title {
+  width: 108px;
+  height: 47px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin-top: 30px;
+  margin-left: 50px;
+  color: #311f09ef;
+}
+
+.login .box-1 .login-section .login-desc {
+  width: 100%;
+  height: 28px;
+  top: 253px;
+  left: 111px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: Raleway;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #5a452b9a;
+  margin-left: 50px;
+}
+
+.login .box-1 .login-section .login-form {
+  margin-top: 60px;
+  gap: 20px;
+}
+
+.login .box-1 .login-section .login-form .text-form {
+  border-radius: 10px;
+  background: #88888769;
+  width: 320px;
+  margin-left: 50px;
+  height: 50px;
+}
+
+.login .box-1 .login-section .login-btn {
+  margin-top: 70px;
+  gap: 20px;
+}
+
+.login .box-1 .login-section .login-btn .log-btn {
+  background: #ff8a00;
+  height: 50px;
+  width: 320px;
+  font-size: 15px;
+  margin-left: 50px;
+  border: 0px;
+  border-radius: 10px;
+  color: white;
+  font-family: Poppons, sans-serif;
+}
+
+.login .box-1 .login-section .login-btn .g-btn {
+  height: 50px;
+  width: 320px;
+  font-size: 15px;
+  margin-left: 50px;
+  border: 0px;
+  border-radius: 10px;
+  gap: 10px;
+  font-family: Poppons, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

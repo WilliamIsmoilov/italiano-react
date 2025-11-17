@@ -5,6 +5,7 @@ import "../../css/homeNavbar.css";
 import { Box, Button, Container, Stack } from '@mui/material';
 import Basket from "./Basket";
 import type { CartItem } from "../../libs/types/search";
+import { useGlobals } from "../../hooks/useGlobal";
 
 interface NavbarProps{
     cartItems: CartItem[];
@@ -12,13 +13,19 @@ interface NavbarProps{
     onRemove: (item: CartItem) => void;
     onDelete: (item: CartItem) => void;
     deleteAll: () => void;
+    setSignupOpen:(isOpen: boolean) => void;
+    setLoginOpen: (isOpen: boolean) => void;
+    handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
+    anchorEl: HTMLElement | null;
+    handleLogoutClose: () => void;
+    handleLogoutRequest: () => void;
+
 }
 
 
 
 export default function HomeNavbar(props: NavbarProps) {
-    const {cartItems, onAdd, onRemove, onDelete, deleteAll} = props
-   
+    const {cartItems, onAdd, onRemove, onDelete, deleteAll, setLoginOpen, anchorEl, handleLogoutRequest} = props
 
     const base = `
         relative inline-block text-current transition-colors duration-200
@@ -28,7 +35,8 @@ export default function HomeNavbar(props: NavbarProps) {
         hover:text-[#FF8A00] hover:after:scale-x-100
     `.trim().replace(/\s+/g, ' ');
     const active = 'text-[#FF8A00] font-semibold ';
-    const authMember = null;
+    const {authMember} = useGlobals(); 
+   
 
     return (
     <div className="home-navbar">
@@ -75,9 +83,11 @@ export default function HomeNavbar(props: NavbarProps) {
                     {!authMember? (<Box>
                     <Button 
                     className='login-button'
+                    onClick={() => setLoginOpen(true)}
                     >Login</Button>
                     </Box>
                 ): ( <Button 
+                    onClick={handleLogoutRequest}
                     className="logout-button">
                         Logout
                     </Button>
