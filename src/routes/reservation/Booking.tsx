@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {  Box, Container, Stack } from "@mui/material";
 import type { Dayjs } from 'dayjs';
 
@@ -8,8 +9,16 @@ import { DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useLocation, useNavigate } from 'react-router-dom';
 import dayjs from "dayjs";
+import { useGlobals } from "../../hooks/useGlobal";
 
-export default function BookingForm(){
+
+interface BookingProps{
+    setLoginOpen: (isOpen: boolean) => void;
+}
+
+export default function BookingForm(props: BookingProps){
+    const {setLoginOpen} = props
+    const {authMember} = useGlobals(); 
   const [date, setDate] = useState<Dayjs | null>(null);
   const [time, setTime] = useState<Dayjs | null>(null);
   const [partySize, setPartySize] = useState('');
@@ -17,7 +26,15 @@ export default function BookingForm(){
 const navigate = useNavigate();
 const location = useLocation();
 
+
+
    const handleOrder = () => {
+    if(!authMember){
+        alert('You have to login to book a table!');
+        setLoginOpen(true)
+        return
+    }
+
     if(date &&  time && partySize){
         navigate('confirmation', {
             state: {

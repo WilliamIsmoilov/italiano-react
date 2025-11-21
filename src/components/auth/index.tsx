@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Modal, Box, Stack, TextField, Typography,  Backdrop, Fade, FormControl, FormLabel, InputAdornment, IconButton } from '@mui/material';
+import { Modal, Box, Stack, TextField, Typography,  Backdrop, Fade, FormControl, FormLabel, InputAdornment, IconButton, Fab } from '@mui/material';
 import '../../css/auth.css'
 import { useState } from 'react';
 import { useGlobals } from '../../hooks/useGlobal';
@@ -167,7 +167,7 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
                                 </FormControl>
                             </Stack>
                             <Stack className='login-btn'>
-                                <button className='log-btn' onClick={handleLoginRequest}> Log in</button>
+                                <Fab className='log-btn' onClick={handleLoginRequest}> Log in</Fab>
                                 <button className='g-btn'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 262">
                                     <path fill="#4285F4" d="M255.9 133.5c0-10.6-.9-18.3-2.8-26.3H130.6v47.7h72.3c-1.5 11.9-9.5 29.7-27.3 41.6l-.3 1.9 39.6 30.7 2.7.3c25-23 39.3-56.9 39.3-96.4"/>

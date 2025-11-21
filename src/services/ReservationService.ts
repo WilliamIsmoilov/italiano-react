@@ -24,9 +24,20 @@ class ReservationService{
             console.log('Error, getMyOrder', err);
             throw err;
         }
-    
+}
 
+
+public async cancelReservation(reservationId: string):Promise<void>{
+    try {
+        const url = `${this.path}/reservation/delete/${reservationId}`
+        const result = await axios.delete(url, {withCredentials: true})
+        return result.data
+    }catch(err){
+            console.log(err)
+            throw err
+        }
 }
 }
+
 
 export default ReservationService

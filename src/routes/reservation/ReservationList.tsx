@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ReservationList.tsx
 import React, { useEffect, useState } from 'react';
@@ -42,6 +43,27 @@ export default function ReservationList() {
     }, [reservationInquery])
 
     const {getReservation} = useSelector(getReservationRetriever)
+    const [reservations, setReservations] = useState<Reservation[]>([]);
+
+
+    //////////////// handlers //////////////////////
+    const handleCancelReservation =  async (reservationId: string) => {
+      try {
+        const confirmed = confirm('Are you sure to cancel your reservation?');
+        if(!confirmed) return
+        const cancel = new ReservationService();
+        const result = await cancel.cancelReservation(reservationId);
+        dispatch(setGetReservation(
+      reservations.filter(r => r._id !== reservationId)
+    ));
+        console.log('reservation deleted     ')
+        console.log('reservationID:', reservationId)
+        return result
+        
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
 
   return (
@@ -57,14 +79,15 @@ export default function ReservationList() {
 
 <Container>
   {getReservation && getReservation.length > 0 ? (
-    <Stack className='reservation-section'>
+    <Stack className='reservation-section' >
     {getReservation.map((ele: Reservation) => (
+      <React.Fragment key={ele._id}>
     <><div className='heading'>
         <Box className='title'>
           Your Reservation
         </Box>
       </div>
-      <Box className='info-box' key={ele._id}>
+      <Box className='info-box'>
           <img src="/images/auth.jpg" className='img-rest' />
 
           <div className='info-col'>
@@ -80,11 +103,11 @@ export default function ReservationList() {
             </div>
             <div className='btn-section'>
               <button type='submit' className='modify-btn'> Modify <AutoFixHighIcon /></button>
-              <button type='submit' className='cancel-btn'> Cancel <CloseIcon /></button>
+              <button onClick={() => handleCancelReservation(ele._id)} type='submit' className='cancel-btn'> Cancel <CloseIcon /></button>
             </div>
           </div>
         </Box></>
-    ))}
+    </React.Fragment>))}
   </Stack>
   ): (
     <div className='resr-empty'>
@@ -96,3 +119,7 @@ export default function ReservationList() {
     </div>
   );
 }
+function dispatch(arg0: { payload: any; type: "reservationPage/setGetReservation"; }) {
+  throw new Error('Function not implemented.');
+}
+

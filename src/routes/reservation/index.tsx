@@ -18,10 +18,13 @@ const actionDispatch = (dispatch: Dispatch) => ({
     setGetReservation: (data: Reservation[]) => dispatch(setGetReservation(data))
 })
 
+interface ReservationProps{
+    setLoginOpen: (isOpen: boolean) => void;
+}
 
 
-
-export default function ReservationPage(){
+export default function ReservationPage(props: ReservationProps){
+    const {setLoginOpen} =props
     const [reservationInquery, setReservationInquery] = useState<ReservationInquery>({} as ReservationInquery);
 
     const {setGetReservation} = actionDispatch(useDispatch())
@@ -42,7 +45,7 @@ export default function ReservationPage(){
       const state = location.state as { backgroundLocation?: Location };
     return(<div className="reservation">
             <Routes location={state?.backgroundLocation || location}>
-               <Route path='/' element={<BookingForm/>}/> 
+               <Route path='/' element={<BookingForm   setLoginOpen={setLoginOpen}/>}/> 
             </Routes>
 
             {state?.backgroundLocation && (

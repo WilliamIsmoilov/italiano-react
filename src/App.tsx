@@ -43,7 +43,6 @@ function App() {
       const member = new MemberService();
       await member.logout();
       setAuthMember(null)
-      confirm('Are you sure to logout?')
     } catch (err) {
       console.log(err);
       sweetErrorHandling(Message.error1)
@@ -74,7 +73,9 @@ function App() {
                                             onRemove={onRemove}
                                             onDelete={onDelete}
                                             deleteAll={deleteAll} />} />
-        <Route path="/reservation/*" element={<ReservationPage />} />
+        <Route path="/reservation/*" element={<ReservationPage 
+                                               setLoginOpen={setLoginOpen}
+                                               />} />
         <Route path="/contactUs" element={<ContactUsPage />} />
      </Routes>
      <Footer/>
