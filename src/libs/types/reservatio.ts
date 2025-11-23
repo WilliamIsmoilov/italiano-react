@@ -1,6 +1,7 @@
 
 
 export interface Reservation{
+    data: Reservation;
     _id: string;
     memberId: string;
     reservationDate: string;
@@ -18,7 +19,7 @@ export interface Reservation{
 export interface ReservationInput{
     reservationDate: string;
     reservationTime: string;
-    reservationSize: number;
+    reservationSize: string;
     memberNick: string;
     memberLastName: string;
     memberPhone: string;

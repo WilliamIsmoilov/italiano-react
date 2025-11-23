@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ReservationList.tsx
 import React, { useEffect, useState } from 'react';
@@ -53,11 +52,9 @@ export default function ReservationList() {
         if(!confirmed) return
         const cancel = new ReservationService();
         const result = await cancel.cancelReservation(reservationId);
-        dispatch(setGetReservation(
-      reservations.filter(r => r._id !== reservationId)
-    ));
-        console.log('reservation deleted     ')
-        console.log('reservationID:', reservationId)
+        setReservations(prev =>
+      prev.filter(r => String(r._id) !== String(reservationId))
+    );
         return result
         
       } catch (err) {
@@ -119,7 +116,3 @@ export default function ReservationList() {
     </div>
   );
 }
-function dispatch(arg0: { payload: any; type: "reservationPage/setGetReservation"; }) {
-  throw new Error('Function not implemented.');
-}
-

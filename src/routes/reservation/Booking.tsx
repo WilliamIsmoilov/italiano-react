@@ -47,6 +47,7 @@ const location = useLocation();
     }
   };
 
+  
     return( <div className="reservation-frame">
         <Container>
             <Stack className='reservation-section'>

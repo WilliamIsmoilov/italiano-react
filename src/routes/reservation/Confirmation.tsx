@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Modal, Box, Button, Container, Stack, TextField,  Typography } from '@mui/material';
 import "../../css/reservation.css"
@@ -5,10 +6,16 @@ import ConfirmedModal from './Confirmed';
 import { GiFullPizza } from 'react-icons/gi';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
 import AccessAlarmsRoundedIcon from '@mui/icons-material/AccessAlarmsRounded';
 import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import type { T } from '../../libs/types/common';
+import { Message } from '../../libs/config';
+import type { Reservation, ReservationInput } from '../../libs/types/reservatio';
+import ReservationService from '../../services/ReservationService';
+import { useGlobals } from '../../hooks/useGlobal';
+import { sweetTopSuccessAlert } from '../../libs/sweetAlert';
 
 
 
@@ -16,16 +23,101 @@ export default function ConfirmationForm() {
   const navigate = useNavigate();
   const location = useLocation();
   const { date, time, partySize } = location.state || {};
-  const [phone, setPhone] = useState('')
   const [isConfirmed, setIsConfirmed] = useState(false)
+  const [reservationDate, setReservationDate] = useState(date || '')
+  const [reservationTime, setReservationTime] = useState(time || '')
+  const [reservationSize, setReservationSize] = useState(partySize || '')
+  const [reservationRequest, setReservationRequest] = useState('')
+  const [memberNick, setMemberNick] = useState('')
+  const [memberLastName, setMemberLastName] = useState('')
+  const [memberPhone, setMemberPhone] = useState('')
+  const [memberEmail, setMemberEmail] = useState('')
+  const {authMember} = useGlobals(); 
+
+
   
-  const handleConfrimClick = () => {
-    setIsConfirmed(true)
-  }
+
+  ///////////// handlers ////////////
 
   const handleClose = () => {
-    navigate(-1); // or navigate('/', { replace: true })
+    navigate(-1); 
   };
+
+  const handleReservationDate = (e: T) => {
+    setReservationDate(e.target.value)
+  }
+
+  const handleReservationTime = (e: T) => {
+    setReservationTime(e.target.value)
+  }
+
+  const handleReservationSize = (e: T) => {
+    setReservationSize(e.target.value)
+  }
+
+  const handleMemberNick = (e: T) => {
+    setMemberNick(e.target.value)
+  }
+
+  const handleMemberLastName = (e: T) => {
+    setMemberLastName(e.target.value)
+  }
+
+  const handleMemberPhone = (value: string) => {
+    setMemberPhone(value)
+  }
+
+  const handleMemberEmail = (e: T) => {
+    setMemberEmail(e.target.value)
+  }
+
+  const handleReservationRequest = (e: T) => {
+    setReservationRequest(e.target.value)
+  }
+
+  useEffect(() => {
+    if(authMember){
+      setMemberNick(authMember.memberNick || '');
+      setMemberEmail(authMember.memberEmail || '')
+      setMemberPhone(authMember.memberPhone || '')
+    }
+  }, [authMember])
+
+
+  const handleReservationOrder = async () => {
+    try {
+      const isFullfill = 
+        reservationDate !== ''
+        && reservationTime !== ''
+        && reservationSize !== ''
+        && memberNick !== ''
+        && memberLastName !== ''
+        && memberPhone !== ''
+        && memberEmail !== ''
+        if(!isFullfill) throw new Error(Message.error3)
+
+      const reservationInput: ReservationInput = {
+        reservationDate: reservationDate,
+        reservationTime: reservationTime,
+        reservationSize: reservationSize,
+        memberNick: memberNick,
+        memberLastName: memberLastName,
+        memberPhone: memberPhone,
+        memberEmail: memberEmail,
+        reservationRequest: reservationRequest
+      }
+
+      const reservation = new ReservationService()
+      const result =  await reservation.createReservation(reservationInput)
+      handleClose()
+      sweetTopSuccessAlert('Reservation successfully created!')
+
+    } catch (err) {
+      console.log(err)
+      alert('Please, fill all the fields!')
+      throw err
+    }
+  }
 
   return ( 
     <Modal
@@ -82,19 +174,22 @@ export default function ConfirmationForm() {
                     <TextField
                       label="First name"
                       variant="outlined"
+                      value={memberNick}
                       className='name-field'
+                      onChange={handleMemberNick}
                        />
 
                     <TextField
                       label="Last name"
                       variant="outlined"
                       className='surname-field'
+                      onChange={handleMemberLastName}
                        />   
 
                        <PhoneInput
                         country={'uz'}
-                        value={phone}
-                        onChange={setPhone}
+                        value={memberPhone}
+                        onChange={handleMemberPhone}
                         disableCountryCode={false}
                         enableSearch={true}
                         inputStyle={{ width: '470px', height:'55px', marginLeft:'15px' }}
@@ -105,17 +200,20 @@ export default function ConfirmationForm() {
                       label="Email address"
                       variant="outlined"
                       className='email-field'
+                      value={memberEmail}
+                      onChange={handleMemberEmail}
                        />
                       
 
                        <textarea 
                        placeholder='Add a special request'
-                       className='request-field' />
+                       className='request-field'
+                       onChange={handleReservationRequest} />
 
                        <button
                        type='button'
                        className='btn-confirm'
-                       onClick={handleConfrimClick}
+                       onClick={handleReservationOrder}
                        >Confirm reservation</button>
 
                        <ConfirmedModal
@@ -132,7 +230,7 @@ export default function ConfirmationForm() {
                       <Typography className='detail-title'>
                         Reservation detail
                       </Typography>
-                      <Typography className='date'> <CalendarMonthRoundedIcon sx={{width:'34px', height:'34px'}}/>{date}</Typography>
+                      <Typography className='date'> <CalendarMonthRoundedIcon sx={{width:'34px', height:'34px'}} />{date}</Typography>
                       <Typography className='time'> <AccessAlarmsRoundedIcon sx={{width:'34px', height:'34px'}}/>{time} </Typography>
                       <Typography className='size'><PersonOutlineRoundedIcon sx={{width:'34px', height:'34px'}}/> {partySize} people</Typography>
 

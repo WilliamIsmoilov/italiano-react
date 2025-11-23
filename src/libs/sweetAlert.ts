@@ -2,6 +2,7 @@
 /** SweetAlertHandling **/
 import Swal from "sweetalert2";
 import { Message } from "./config";
+import table from '/images/table.jpg'
 
 export const sweetErrorHandling = async (err: any) => {
   const error = err.response?.data ?? err;
@@ -12,6 +13,18 @@ export const sweetErrorHandling = async (err: any) => {
     showConfirmButton: false,
   });
 };
+
+
+export const sweetErrorHandlings = async (err: any) => {
+  const error = err.response?.data ?? err;
+  const message = error?.message ?? Message.error3;
+  await Swal.fire({
+    icon: "error",
+    text: message,
+    showConfirmButton: false,
+  });
+};
+
 
 export const sweetTopSuccessAlert = async (
   msg: string,
@@ -67,9 +80,10 @@ export const sweetAcceptedProvider = (
   Swal.fire({
   title: msg,
   text: "Thanks for your aproach",
-  imageUrl: "https://unsplash.it/400/200",
+  imageUrl:  table,
   imageWidth: 400,
   imageHeight: 200,
   imageAlt: "Custom image"
 });
 }
+

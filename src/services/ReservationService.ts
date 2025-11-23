@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import { serverApi } from "../libs/config";
-import type { Member } from "../libs/types/member";
-import type { Reservation, ReservationInquery } from "../libs/types/reservatio";
+import type { Reservation, ReservationInput, ReservationInquery } from "../libs/types/reservatio";
 
 
 class ReservationService{
@@ -11,8 +10,6 @@ class ReservationService{
     constructor() {
         this.path = serverApi
     }
-
-
 
     public async getMyReservation(input: ReservationInquery): Promise<Reservation[]>{
 
@@ -37,6 +34,19 @@ public async cancelReservation(reservationId: string):Promise<void>{
             throw err
         }
 }
+
+
+public async createReservation(input: ReservationInput): Promise<Reservation>{
+    try {
+        const url = `${this.path}/reservation/create`;
+        const result = await axios.post(url, input, {withCredentials: true});
+        return result.data
+    } catch (err) {
+        console.log(err)
+        throw err
+    }
+}
+
 }
 
 

@@ -15,11 +15,11 @@ const reservationPageSlice = createSlice({
     reducers: {
         setGetReservation: (state, action) => {
             state.getReservation = action.payload
-        }
+        },
     }
 })
 
-export const{setGetReservation} = reservationPageSlice.actions
+export const{setGetReservation } = reservationPageSlice.actions
 
 const ReservationPageReducer = reservationPageSlice.reducer;
 export default ReservationPageReducer;
