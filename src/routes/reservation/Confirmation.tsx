@@ -16,10 +16,15 @@ import type { Reservation, ReservationInput } from '../../libs/types/reservatio'
 import ReservationService from '../../services/ReservationService';
 import { useGlobals } from '../../hooks/useGlobal';
 import { sweetTopSuccessAlert } from '../../libs/sweetAlert';
+import { useDispatch, useSelector } from 'react-redux';
+import { retrieveGetRerservation } from './selector';
+import { setGetReservation } from './slice';
 
 
 
 export default function ConfirmationForm() {
+  const dispatch = useDispatch()
+  const getReservation = useSelector(retrieveGetRerservation);
   const navigate = useNavigate();
   const location = useLocation();
   const { date, time, partySize } = location.state || {};
@@ -108,7 +113,10 @@ export default function ConfirmationForm() {
       }
 
       const reservation = new ReservationService()
+      alert('It takes from 2 to 3 seconds please wait!')
       const result =  await reservation.createReservation(reservationInput)
+      const updated = await reservation.getMyReservation({})
+      dispatch(setGetReservation(updated))
       handleClose()
       sweetTopSuccessAlert('Reservation successfully created!')
 
