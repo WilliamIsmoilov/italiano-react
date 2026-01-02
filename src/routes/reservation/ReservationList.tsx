@@ -42,19 +42,21 @@ export default function ReservationList() {
     }, [reservationInquery])
 
     const {getReservation} = useSelector(getReservationRetriever)
-    const [reservations, setReservations] = useState<Reservation[]>([]);
+
 
 
     //////////////// handlers //////////////////////
+    const dispatchRes = useDispatch();
     const handleCancelReservation =  async (reservationId: string) => {
       try {
         const confirmed = confirm('Are you sure to cancel your reservation?');
         if(!confirmed) return
         const cancel = new ReservationService();
         const result = await cancel.cancelReservation(reservationId);
-        setReservations(prev =>
-      prev.filter(r => String(r._id) !== String(reservationId))
-    );
+       cancel.getMyReservation(reservationInquery)
+       .then(data => {
+        dispatchRes(setGetReservation(data))
+       })
         return result
         
       } catch (err) {

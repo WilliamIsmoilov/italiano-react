@@ -18,10 +18,12 @@ interface AuthenticationModalProps{
   loginOpen: boolean;
   handleSignupClose: () => void;
   handleLoginClose: () => void;
+  setSignupOpen:(isOpen: boolean) => void;
+  setLoginOpen: (isOpen: boolean) => void;
 }
 
 export default function AuthenticationModal(props:  AuthenticationModalProps){
-    const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
+    const { signupOpen, loginOpen, handleSignupClose, handleLoginClose, setSignupOpen, setLoginOpen } = props;
     const [memberEmail, setMemberEmail] = useState<string>('')
     const [memberPassword, setMemberPassword] = useState<string>('')
     const [memberNick, setMemberNick] = useState<string>('')
@@ -110,6 +112,14 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
         }
     }
 
+    const openSignup = () => {
+  setLoginOpen(false);      // avval login yopiladi
+  setTimeout(() => {
+    setSignupOpen(true);   // keyin signup ochiladi
+  }, 200);
+};
+
+
     return (
        <div>
         <Modal
@@ -125,21 +135,13 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
             sx={
                 {display: 'flex', justifyContent: 'center', alignItems: 'center'}
             }
-            slotProps={{
-                backdrop: {
-                    timeout: 200,
-                    sx: {
-                        backgroundColor: 'rgba(0,0,0,0.4)'
-                    }
-                }
-            }}
             >
                 <Fade in={loginOpen}>
                    <Box className='box-1'>        
                         <Stack className='login-section'>
                             <GiFullPizza className="icon"/>
                             <Box className="login-title"> Login </Box>
-                            <Typography className='login-desc'>Don't you have an account? Sign up</Typography>
+                            <Typography className='login-desc'>Don't you have an account? <span className='signup-link'onClick={openSignup}>Sign up</span></Typography>
 
                             <Stack className='login-form'>
                                 <FormControl fullWidth>
@@ -199,6 +201,97 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
                 </Fade>
                 
         </Modal>
+
+
+
+<Modal
+  aria-labelledby="transition-modal-title"
+  aria-describedby="transition-modal-description"
+  open={signupOpen}
+  onClose={handleSignupClose}
+  closeAfterTransition
+  BackdropComponent={Backdrop}
+  BackdropProps={{ timeout: 100 }}
+  slotProps={{
+    backdrop: {
+      sx: { backgroundColor: 'rgba(0,0,0,0.4)' },
+    },
+  }}
+  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+>
+  <Fade in={signupOpen}>
+    <Box className="signup-box">
+      <Stack className="signup-section">
+        <GiFullPizza className="signup-icon" />
+
+        <Box className="signup-title">Sign up</Box>
+
+        <Typography className="signup-desc">
+          Already have an account?
+          <span
+            className="login-link"
+            onClick={() => {
+              setSignupOpen(false);
+              setTimeout(() => setLoginOpen(true), 200);
+            }}
+          >
+            {" "}Login
+          </span>
+        </Typography>
+
+        <Stack className="signup-form">
+            <FormControl>
+                <TextField 
+                className="signup-input"
+                placeholder="Email" 
+                onChange={handleEmail}/>
+            </FormControl>
+          <FormControl>
+            <TextField 
+             className="signup-input"
+             placeholder="Nickname"
+             onChange={handleUserName} />
+          </FormControl>
+          <FormControl>
+            <TextField
+            className="signup-input"
+            placeholder="Phone"
+            onChange={handlePhone} />
+          </FormControl>
+          <FormControl>
+            <TextField
+            className="signup-input"
+            placeholder="Address"
+            onChange={handleAddress} />
+          </FormControl>
+          <FormControl>
+            <TextField
+            className="signup-input"
+            placeholder="Password"
+            type="password"
+            onChange={handlePassword}
+            onKeyDown={handlePasswordKeyDown}
+          />
+          </FormControl>
+          
+        </Stack>
+
+        <Stack className="signup-btn">
+          <Fab className="signup-submit" onClick={handleSignupRequest}>Sign up</Fab>
+        </Stack>
+      </Stack>
+
+      <Stack className="signup-img-box">
+        <div>
+          <img src="/images/auth.jpg" alt="" className="signup-img" />
+        </div>
+      </Stack>
+    </Box>
+  </Fade>
+</Modal>
        </div> 
+
+       
+
     )
 }

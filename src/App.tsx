@@ -80,6 +80,8 @@ function App() {
      </Routes>
      <Footer/>
      <AuthenticationModal
+     setSignupOpen={setSignupOpen}
+     setLoginOpen={setLoginOpen}
            signupOpen={signupOpen}
            loginOpen={loginOpen}
            handleLoginClose={handleLoginClose}
