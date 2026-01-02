@@ -111,7 +111,7 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
     }
 
     return (
-       <div className=''>
+       <div>
         <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -122,10 +122,20 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
             BackdropProps={{
               timeout: 100,
             }}
-            className='login'
+            sx={
+                {display: 'flex', justifyContent: 'center', alignItems: 'center'}
+            }
+            slotProps={{
+                backdrop: {
+                    timeout: 200,
+                    sx: {
+                        backgroundColor: 'rgba(0,0,0,0.4)'
+                    }
+                }
+            }}
             >
                 <Fade in={loginOpen}>
-                   <Stack className='box-1'>        
+                   <Box className='box-1'>        
                         <Stack className='login-section'>
                             <GiFullPizza className="icon"/>
                             <Box className="login-title"> Login </Box>
@@ -185,7 +195,7 @@ export default function AuthenticationModal(props:  AuthenticationModalProps){
                             </div>
                             
                         </Stack>
-                </Stack> 
+                </Box> 
                 </Fade>
                 
         </Modal>
