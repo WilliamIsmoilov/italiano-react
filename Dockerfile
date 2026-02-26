@@ -3,14 +3,14 @@ FROM node:22.13.0-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN yarn install
+RUN yarn install --ignore-engines
 
 COPY . .
 RUN yarn build
 
 FROM nginx:alpine
 
-COPY dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 
