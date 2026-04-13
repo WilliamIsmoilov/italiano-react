@@ -93,7 +93,7 @@ export default  function ContactPage(){
     return( <div className="contact-frame">
         <Container>
             <Stack className="contact-section">
-                <Box className='contact-title'>Contact us</Box>
+                <Typography className='contact-title'>Contact us</Typography>
                 <Typography className="contact-desc">
                     We love hearing from our customers. Feel free to share your experience or ask any questions you may have.
                 </Typography>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {  Box, Container, Stack } from "@mui/material";
+import {  Box, Container, Stack, Typography } from "@mui/material";
 import type { Dayjs } from 'dayjs';
 
 import  { useState } from 'react';
@@ -68,9 +68,9 @@ const location = useLocation();
                 </Stack>
                 <Stack className="table-order">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <Box className='book-title'>
+                        <Typography className='book-title'>
                             Book a table
-                        </Box>
+                        </Typography>
 
                         
                         <FormControl 
